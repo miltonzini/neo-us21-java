@@ -76,10 +76,11 @@ public class Clase06 {
                 matrizTranspuesta[j][i] = matriz[i][j];
             }
         }
-         for( int i = 0; i< columnas; i++ ){
+        for( int i = 0; i< columnas; i++ ){
             for( int j = 0; j<filas; j++ ){
-                System.out.println(matrizTranspuesta[i][j] + " ");
+                System.out.print(matrizTranspuesta[i][j] + " ");
             }
+            System.out.println();
         }
     }
 
