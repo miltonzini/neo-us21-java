@@ -27,7 +27,7 @@ public class Clase06 {
         //Inicializamos una variable para almacenar el valor máximo
         int maximo = vector[0];
         
-        //Recorrer el vector para encontrar el valor maximo
+        //Recorrer el vector para encontrar el valor máximo
         for ( int i = 1; i <vector.length; i++ ){
             if ( vector[i] > maximo){
                 maximo = vector[i];
