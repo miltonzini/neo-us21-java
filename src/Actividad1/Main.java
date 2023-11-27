@@ -63,20 +63,21 @@ public class Main {
         }
 
         if (validationErrors.isEmpty()) {
-            // No hay errores, continuar con el procesamiento
-            System.out.println("No hay errores");
+            // No hay errores, continuar con el procesamiento [CONTINUAR]
+            
         } else {
-            // Hay errores, mostrar los mensajes de error
-            System.out.println("Se encontraron errores:");
+            // Mostrar los mensajes de error en un cuadro de diálogo
+            StringBuilder mensajeErrores = new StringBuilder("Se encontraron errores:\n");
             for (String error : validationErrors) {
-                System.out.println("- " + error);
+                mensajeErrores.append("- ").append(error).append("\n");
             }
+            JOptionPane.showMessageDialog(null, mensajeErrores.toString(), "Errores", JOptionPane.ERROR_MESSAGE);
         }
 
 
-
-
     }
+
+
     public static void listarPersonas() {
         // pending
     }
