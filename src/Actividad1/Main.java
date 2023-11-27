@@ -6,6 +6,8 @@ import java.util.List;
 import javax.swing.JOptionPane;
 
 public class Main {
+    static ArrayList<Persona> Personas = new ArrayList<>();
+
     public static void main(String[] args) {
         mostrarOpciones();
     }
@@ -13,8 +15,8 @@ public class Main {
         String[] opciones = {"Agregar Persona", "Listar Personas", "Salir"};
 		int seleccion = JOptionPane.showOptionDialog(
             null,
-            "Menu", 
-            "Registro: ",
+            "Elija una opción", 
+            "Registro de Personas: ",
 		    JOptionPane.DEFAULT_OPTION, 
             JOptionPane.INFORMATION_MESSAGE, 
             null, 
@@ -29,6 +31,7 @@ public class Main {
 			break;
 		case 1:
 			listarPersonas();
+            mostrarOpciones();
 			break;
 		case 2:
 			System.exit(0);
@@ -63,7 +66,16 @@ public class Main {
         }
 
         if (validationErrors.isEmpty()) {
-            // No hay errores, continuar con el procesamiento [CONTINUAR]
+            // No hay errores, continuar con el procesamiento
+            Personas.add(new Persona(nombre, apellido, dni, fechaDeNacimiento));
+            JOptionPane.showMessageDialog(
+            null,
+            "Se agregó una persona exitosamente",
+            "Éxito",
+            JOptionPane.INFORMATION_MESSAGE
+            );
+
+            mostrarOpciones();
             
         } else {
             // Mostrar los mensajes de error en un cuadro de diálogo
@@ -72,14 +84,23 @@ public class Main {
                 mensajeErrores.append("- ").append(error).append("\n");
             }
             JOptionPane.showMessageDialog(null, mensajeErrores.toString(), "Errores", JOptionPane.ERROR_MESSAGE);
+            agregarPersona();
         }
 
 
     }
 
+    
+
 
     public static void listarPersonas() {
-        // pending
+        StringBuilder lista = new StringBuilder("Lista de personas:\n");
+        for (Persona persona : Personas) {
+            lista.append("Nombre: ").append(persona.getNombre()).append(", Apellido: ").append(persona.getApellido())
+                    .append(", DNI: ").append(persona.getDni()).append(", Fecha de Nacimiento: ")
+                    .append(persona.getFechaDeNacimiento()).append("\n");
+        }
+        JOptionPane.showMessageDialog(null, lista.toString(), "Listado de Personas", JOptionPane.INFORMATION_MESSAGE);
     }
 }
 
