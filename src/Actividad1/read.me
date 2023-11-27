@@ -1,0 +1,27 @@
+# Sistema de Registro de Personas
+
+Este sistema permite registrar personas con su información básica: nombre, apellido, DNI y fecha de nacimiento. 
+
+## Lógica del Programa
+
+El programa se inicia desde la clase `Main.java`, que maneja la interfaz de usuario a través de la biblioteca 
+`JOptionPane` de Java Swing. Al ejecutar el programa, se muestra un menú con las siguientes opciones:
+- **Agregar Persona**: Permite ingresar los detalles de una nueva persona, como nombre, apellido, DNI y fecha 
+de nacimiento. Se validan los datos ingresados y se muestra un mensaje de éxito o se informa sobre cualquier error.
+- **Listar Personas**: Muestra en un cuadro de diálogo la lista de personas registradas, con sus respectivos nombres, 
+apellidos, DNIs y fechas de nacimiento.
+- **Salir**: Cierra la aplicación.
+
+### Funcionalidad de Agregar Persona
+
+Cuando se elige "Agregar Persona", el sistema solicita al usuario que ingrese los datos requeridos.
+Se realiza una validación para asegurarse de que se ingresen datos válidos. 
+Por ejemplo, se verifica que los campos de nombre y apellido no estén vacíos y que el DNI tenga exactamente 
+8 dígitos numéricos. Además, se comprueba que la fecha de nacimiento tenga el formato correcto (dd/mm/yyyy).
+
+### Funcionalidad de Listar Personas
+
+La opción "Listar Personas" muestra en un cuadro de diálogo la lista de todas las personas registradas en el 
+sistema. Esto se logra recorriendo la lista de personas y mostrando cada detalle (nombre, apellido, DNI y 
+fecha de nacimiento) en un formato legible.
+
