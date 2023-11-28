@@ -97,10 +97,17 @@ public class Main {
         
         // si hay errores, imprimirlos y volver a iniciarSesion(). Si no hay errores se pasa el menu Principal
         if (!loginValidationErrors.isEmpty()) {
-            // TODO: Imprimir errores         
-            // TODO: volver a iniciarSesion()
+            // Imprimir errores y volver a iniciarSesion()
+            StringBuilder mensajeErrores = new StringBuilder("Se encontraron errores:\n");
+            for (String error : loginValidationErrors) {
+                mensajeErrores.append("- ").append(error).append("\n");
+            }
+            JOptionPane.showMessageDialog(null, mensajeErrores.toString(), "Errores", JOptionPane.ERROR_MESSAGE);
+        
+            iniciarSesion();
+            
         } else {
-            // TODO: Mostrar mensaje de "sesión iniciada"
+            JOptionPane.showMessageDialog(null, "Sesión iniciada", "Éxito", JOptionPane.INFORMATION_MESSAGE);
             menuPrincipal();
         }
     }
@@ -116,7 +123,8 @@ public class Main {
     
     
     public static void menuPrincipal() {
-        
+        // TODO: complete this method
+        JOptionPane.showMessageDialog(null, "Este es el Menú Principal", "Menú Principal", JOptionPane.INFORMATION_MESSAGE);
     }
 }
 
