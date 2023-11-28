@@ -20,13 +20,22 @@ public class Biblioteca {
         listadoLibros.add(new Libro(01, "Rayuela", "Julio Cortazar", "novela", true, null));
         listadoLibros.add(new Libro(02, "El Tunel", "Ernesto Sábato", "novela", true, null));
 
-        // imprimirListadoLibros();
 
     }
 
+    public static ArrayList<Usuario> getListadoUsuarios() {
+        return listadoUsuarios;
+    }    
 
+    public static ArrayList<Libro> getListadoLibros() {
+        return listadoLibros;
+    }
 
-    public static void imprimirListadoUsuarios() { // TODO: convertir a getter
+    
+
+    // TODO: clean up temp methods
+
+    public static void imprimirListadoUsuarios() { // (temp method for debugging)
         System.out.println("------------------------------------");
         System.out.println("Listado Usuarios Registrados:");
         for (Usuario usuario : listadoUsuarios) {
@@ -35,8 +44,7 @@ public class Biblioteca {
         System.out.println("------------------------------------");
     }
 
-
-    public static void imprimirListadoLibros() { // TODO: convertir a getter
+    public static void imprimirListadoLibros() { // (temp method for debugging)
         System.out.println("------------------------------------");
         System.out.println("Catálogo de Libros:");
         for (Libro libro : listadoLibros) {
@@ -44,7 +52,4 @@ public class Biblioteca {
         }
         System.out.println("------------------------------------");
     }
-
-
-
 }
