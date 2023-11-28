@@ -28,7 +28,7 @@ Los estudiantes deben crear una aplicación de biblioteca en Java que cumpla con
 
 
 # PSEUDOCÓDIGO / NOTAS
--en Main, llamar a métodos de Biblioteca para 
+-en Main, llamar a métodos de Biblioteca para ~~~
 -- crear bibliotecas listadoUsuarios y listadoLibros. 
 -- precargar algunos libros de ejemplo
 -- precargar un usuario de ejemplo
