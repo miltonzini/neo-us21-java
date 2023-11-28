@@ -1,5 +1,8 @@
 package Actividad2;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.swing.JOptionPane;
 
 public class Main {
@@ -8,7 +11,6 @@ public class Main {
         Biblioteca.precargarUsuarios();
         Biblioteca.precargarLibros();
         
-        //
         menuInicio();
 
     }
@@ -44,11 +46,35 @@ public class Main {
     }
 
     public static void iniciarSesion() {
-        // lógica de inicio de sesión
-        // ... 
+        // Lista con errores de validación
+        List<String> loginValidationErrors = new ArrayList<>();
 
-        // una vez terminado dirigiar a Menu Principal
-        menuPrincipal();
+        // Ingresar y validar email
+        String emailIngresado = JOptionPane.showInputDialog("Ingresar email:");
+
+        if (emailIngresado.isEmpty()) {
+            loginValidationErrors.add("El campo email se encuentra vacío");
+        } else if (!emailIngresado.contains("@")) {
+            loginValidationErrors.add("El email ingresado no es válido, debe contener '@'");
+        } else {
+            // Verificar si el email existe en la lista de usuarios
+            ArrayList<Usuario> listadoUsuarios = Biblioteca.getListadoUsuarios();
+            boolean emailExistente = false;
+            for (Usuario usuario : listadoUsuarios) {
+                if (usuario.getEmail().equals(emailIngresado)) {
+                    emailExistente = true;
+                    break;
+                }
+            }
+            if (!emailExistente) {
+                loginValidationErrors.add("El email ingresado no existe");
+            }
+
+        }
+
+        
+        // Ingresar y validar contraseña
+        // ...
     }
 
     public static void registrarUsuario() {
