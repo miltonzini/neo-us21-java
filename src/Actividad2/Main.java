@@ -51,6 +51,8 @@ public class Main {
 
         // Ingresar y validar email
         String emailIngresado = JOptionPane.showInputDialog("Ingresar email:");
+        Usuario usuarioEncontrado = null; // Declaramos usuarioEncontrado fuera del bloque 'else'
+
 
         if (emailIngresado.isEmpty()) {
             loginValidationErrors.add("El campo email se encuentra vacío");
@@ -63,9 +65,11 @@ public class Main {
             for (Usuario usuario : listadoUsuarios) {
                 if (usuario.getEmail().equals(emailIngresado)) {
                     emailExistente = true;
+                    usuarioEncontrado = usuario;
                     break;
                 }
             }
+    
             if (!emailExistente) {
                 loginValidationErrors.add("El email ingresado no existe");
             }
@@ -75,12 +79,17 @@ public class Main {
         // Ingresar y validar contraseña (si no hay errores en el paso anterior)
         if (loginValidationErrors.isEmpty()) {
             String contrasenaIngresada = JOptionPane.showInputDialog("Ingresar Contraseña:");
+            
             if (contrasenaIngresada.isEmpty()) {
                 loginValidationErrors.add("El campo contraseña se encuentra vacío");
             } else if (emailIngresado.length() < 8 ) {
                 loginValidationErrors.add("La contraseña debe contener al menos 8 caracteres");
             } else {
-                // ver si la contraseña del usuario cuyo email es igual emailIngresado coincide con la contraseñaIngresada       
+                // chequear si la contraseña ingresada coincide con la que figura en el usuario existente
+                String contrasenaUsuario = usuarioEncontrado.getContrasena();
+                if (!contrasenaIngresada.equals(contrasenaUsuario)) {
+                    loginValidationErrors.add("La contraseña ingresada no es correcta");
+                }
             }
         }
 
