@@ -32,7 +32,7 @@ Los estudiantes deben crear una aplicación de biblioteca en Java que cumpla con
 -- crear bibliotecas listadoUsuarios y listadoLibros. 
 -- precargar algunos libros de ejemplo
 -- precargar un usuario de ejemplo
--- usar un menú con JOptions con las siguientes jerarquía de opciones:
+-- usar un menú con JOptions con las siguientes jerarquía de opciones ["menuInicio()"]:
 ---- 1) Iniciar sesión
 ------ se solicita al usuario el email y la contrasena, se validan los datos ["validarUsuario()"] y se instancia un nuevo Usuario
 ------ se saluda al usuario y se le muestran las opciones principales
@@ -43,17 +43,30 @@ Los estudiantes deben crear una aplicación de biblioteca en Java que cumpla con
 --------------- si no está disponible mostrar mensaje ["mensajeError('libro no disponible')"] y volver a menuPrincipal()
 ------------- si no se encontró, mostrar mensaje ["mensajeError('no se encontró el libro')"] y volver a menuPrincipal()
 --------- b) agregarLibro()
+------------- se solicita secuencialmente titulo, autor y género
 --------- c) alquilarLibro()
+------------- se solicita el nombre y se busca en el listado
+---------------- si existe, se cheuquea disponibilidad ("verDisponibilidad(libro)")
+--------------------- si está disponible, se muestra mensaje de success y se redirige a menuPrincipal().
+--------------------- si no está disponible, se muestra mensaje de error y se redirige a menuPrincipal().
+---------------- si no existe, se vuelve mensaje de error y se redirige al menú
 --------- d) devolverLibro()
+------------ se chequea si el usuario tiene libros en su poder.
+---------------- si es true, imprimir mensajeSuccess"has devuelto el libro: '' ") y redrigir a menuPrincipal().
+---------------- si es false, imprimir mensajeError("no adeudas ningún libro") y redrigir a menuPrincipal().
 --------- e) Salir
----- 2) Registrarse: se validan los datos y se muestran las mismas opciones principales
+---- 2) registrarUsuario(): se validan los datos 
+--------- si hay error se muestra el mensaje correspondiente y se vuelve a registrarUsuario() 
+--------- si es success, se redirige a menuPrincipal()
 ---- 3) Salir.
 
 
 -Clases a crear: 
 ----- Main
+--------- llama a precarga los datos iniciales y llama a menuInicio()
 ----- Biblioteca
------ Persona
+--------- contiene las listas de libros y usuarios
+----- Usuario
 --------- atributos: dni, nombre, apellido, email, contrasena, poseeLibro
 ----- Libro
 --------- atributos: ID, título, autor, género, estado(noDisponible|disponible), alquiladoDNI
