@@ -34,26 +34,26 @@ Los estudiantes deben crear una aplicación de biblioteca en Java que cumpla con
 -- precargar un usuario de ejemplo
 -- usar un menú con JOptions con las siguientes jerarquía de opciones:
 ---- 1) Iniciar sesión
------- se solicita al usuario el email y la contrasena, se validan los datos y se instancia un nuevo Usuario
+------ se solicita al usuario el email y la contrasena, se validan los datos ["validarUsuario()"] y se instancia un nuevo Usuario
 ------ se saluda al usuario y se le muestran las opciones principales
---------- a) buscarLibro: 
+--------- a) "buscarLibro()": 
 ----------- se da la opción de elegir por título, autor o género. 
-------------- si se encontró, mostrar info del libro.
---------------- si está disponible mostrar opciónes alquilar o menuPrincipal
---------------- si no está disponible mostrar mensaje y volver a menuPrincipal
-------------- si no se encontró, mostrar mensaje y volver al menú prinicipal
---------- b) agregarLibro
---------- c) alquilarLibro
---------- d) devolverLibro
+------------- si se encontró, mostrar info del libro ["mostrarInfoLibro()"].
+--------------- si está disponible mostrar opciónes alquilarLibro() o menuPrincipal()
+--------------- si no está disponible mostrar mensaje ["mensajeError('libro no disponible')"] y volver a menuPrincipal()
+------------- si no se encontró, mostrar mensaje ["mensajeError('no se encontró el libro')"] y volver a menuPrincipal()
+--------- b) agregarLibro()
+--------- c) alquilarLibro()
+--------- d) devolverLibro()
 --------- e) Salir
 ---- 2) Registrarse: se validan los datos y se muestran las mismas opciones principales
 ---- 3) Salir.
 
 
 -Clases a crear: 
+----- Main
+----- Biblioteca
 ----- Persona
---------- atributos: dni, nombre, apellido
------ Usuario (hereda de persona)
---------- atributos: email, contrasena, poseeLibro
+--------- atributos: dni, nombre, apellido, email, contrasena, poseeLibro
 ----- Libro
 --------- atributos: ID, título, autor, género, estado(noDisponible|disponible), alquiladoDNI
