@@ -69,12 +69,31 @@ public class Main {
             if (!emailExistente) {
                 loginValidationErrors.add("El email ingresado no existe");
             }
-
         }
 
         
-        // Ingresar y validar contraseña
-        // ...
+        // Ingresar y validar contraseña (si no hay errores en el paso anterior)
+        if (loginValidationErrors.isEmpty()) {
+            String contrasenaIngresada = JOptionPane.showInputDialog("Ingresar Contraseña:");
+            if (contrasenaIngresada.isEmpty()) {
+                loginValidationErrors.add("El campo contraseña se encuentra vacío");
+            } else if (emailIngresado.length() < 8 ) {
+                loginValidationErrors.add("La contraseña debe contener al menos 8 caracteres");
+            } else {
+                // ver si la contraseña del usuario cuyo email es igual emailIngresado coincide con la contraseñaIngresada       
+            }
+        }
+
+        
+        
+        // si hay errores, imprimirlos y volver a iniciarSesion(). Si no hay errores se pasa el menu Principal
+        if (!loginValidationErrors.isEmpty()) {
+            // TODO: Imprimir errores         
+            // TODO: volver a iniciarSesion()
+        } else {
+            // TODO: Mostrar mensaje de "sesión iniciada"
+            menuPrincipal();
+        }
     }
 
     public static void registrarUsuario() {
