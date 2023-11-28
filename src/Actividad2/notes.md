@@ -28,10 +28,11 @@ Los estudiantes deben crear una aplicación de biblioteca en Java que cumpla con
 
 
 # PSEUDOCÓDIGO / NOTAS
--en Main: 
+-en Main, llamar a métodos de Biblioteca para 
 -- crear bibliotecas listadoUsuarios y listadoLibros. 
 -- precargar algunos libros de ejemplo
 -- precargar un usuario de ejemplo
+-luego
 -- usar un menú con JOptions con las siguientes jerarquía de opciones ["menuInicio()"]:
 ---- 1) Iniciar sesión
 ------ se solicita al usuario el email y la contrasena, se validan los datos ["validarUsuario()"] y se instancia un nuevo Usuario
