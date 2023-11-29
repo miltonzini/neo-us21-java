@@ -115,4 +115,20 @@ public class Biblioteca {
         }
         System.out.println("------------------------------------");
     }
+
+    public static void imprimirInfoCompleta() { // (temp method for debugging)
+        System.out.println("------------------------------------");
+        System.out.println("Catálogo de Libros:");
+        for (Libro libro : listadoLibros) {
+            System.out.println(" - " + libro.getTitulo() + " (" + libro.getAutor() + "). | Disponible?: " + libro.getDisponible() + "." );
+        }
+        System.out.println("  ");
+        System.out.println("  ");
+
+        System.out.println("Listado Usuarios Registrados:");
+        for (Usuario usuario : listadoUsuarios) {
+            System.out.println(" - " + usuario.getNombre() + " " + usuario.getApellido() + " | Posee Libro?: " + usuario.getPoseeLibro() + ".");
+        }
+        System.out.println("------------------------------------");
+    }
 }
