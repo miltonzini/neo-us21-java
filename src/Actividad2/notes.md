@@ -37,12 +37,10 @@ Los estudiantes deben crear una aplicación de biblioteca en Java que cumpla con
 ---- 1) Iniciar sesión [ok]
 ------ se solicita al usuario el email y la contrasena, se validan los datos ["validarUsuario()"] y se instancia un nuevo Usuario [ok]
 ------ se muestra mensaje de éxito y se llama al Menú Principal
---------- a) "buscarLibro()": 
------------ se da la opción de elegir por título, autor o género. 
-------------- si se encontró, mostrar info del libro ["mostrarInfoLibro()"].
---------------- si está disponible mostrar opciónes alquilarLibro() o menuPrincipal()
---------------- si no está disponible mostrar mensaje ["mensajeError('libro no disponible')"] y volver a menuPrincipal()
-------------- si no se encontró, mostrar mensaje ["mensajeError('no se encontró el libro')"] y volver a menuPrincipal()
+--------- a) "buscarLibro()", se muestran 3 opciones
+----------- buscar por título [ok]
+----------- buscar por autor 
+----------- buscar por género. 
 --------- b) agregarLibro()
 ------------- se solicita secuencialmente titulo, autor y género
 --------- c) alquilarLibro()
