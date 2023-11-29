@@ -36,12 +36,14 @@ public class Biblioteca {
         for (Libro libro : listadoLibros) {
             if (libro.getTitulo().equals(tituloLibro)) {
                 libroEncontrado = libro;
+                System.out.println("debug: pasó por libro encontrado ok");
                 break;
             } else {
-                break;
+                System.out.println("debug: pasó por libro encontrado false");
             }
         }
         return libroEncontrado;
+    
     }
 
     public static ArrayList<Usuario> getListadoUsuarios() {
