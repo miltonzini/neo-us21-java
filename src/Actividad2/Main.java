@@ -6,6 +6,8 @@ import java.util.List;
 import javax.swing.JOptionPane;
 
 public class Main {
+    private static Usuario usuarioActual; // Variable global para almacenar el usuario actual
+
     public static void main(String[] args) {
         // acceder a métodos iniciales de biblioteca
         Biblioteca.precargarUsuarios();
@@ -99,10 +101,13 @@ public class Main {
                 mensajeErrores.append("- ").append(error).append("\n");
             }
             JOptionPane.showMessageDialog(null, mensajeErrores.toString(), "Errores", JOptionPane.ERROR_MESSAGE);
-        
+
             iniciarSesion();
             
+            
         } else {
+            usuarioActual = usuarioEncontrado;
+            System.out.println("El usuario actual es: " + usuarioActual.getNombre() + " " + usuarioActual.getApellido()); // temp
             JOptionPane.showMessageDialog(null, "Sesión iniciada", "Éxito", JOptionPane.INFORMATION_MESSAGE);
             menuPrincipal();
         }
@@ -180,6 +185,9 @@ public class Main {
             Biblioteca.agregarNuevoUsuario(nuevoUsuario);
             JOptionPane.showMessageDialog(null, "usuario registrado con éxito", "Éxito", JOptionPane.INFORMATION_MESSAGE);
             Biblioteca.imprimirListadoUsuarios(); // temp
+            
+            usuarioActual = nuevoUsuario;
+            System.out.println("El usuario actual es: " + usuarioActual.getNombre() + " " + usuarioActual.getApellido()); // temp
             menuPrincipal();
         }
     
