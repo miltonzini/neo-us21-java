@@ -30,6 +30,20 @@ public class Biblioteca {
         listadoLibros.add(nuevoLibro);
     }
 
+    public static Libro getLibro(String tituloLibro) {
+        ArrayList<Libro> listadoLibros = getListadoLibros();
+        Libro libroEncontrado = null;
+        for (Libro libro : listadoLibros) {
+            if (libro.getTitulo().equals(tituloLibro)) {
+                libroEncontrado = libro;
+                break;
+            } else {
+                break;
+            }
+        }
+        return libroEncontrado;
+    }
+
     public static ArrayList<Usuario> getListadoUsuarios() {
         return listadoUsuarios;
     }    

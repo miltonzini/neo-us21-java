@@ -305,9 +305,17 @@ public class Main {
         // usar método Biblioteca.buscarPorTitulo();
         String tituloLibro = JOptionPane.showInputDialog("Ingresar título del libro:");
         if (Biblioteca.buscarLibroPorTitulo(tituloLibro)) {
-            // TODO:  si es verdadero: chequer disponibilidad
-            System.out.println("el libro está en catálogo");
-            System.out.println("chequear disponibilidad");
+            Libro libroActual = Biblioteca.getLibro(tituloLibro);
+            if (libroActual.getDisponible() && !usuarioActual.getPoseeLibro() ) {
+                usuarioActual.setPoseeLibro(true);
+                libroActual.setDisponible(false);
+                libroActual.setAlquiladoDNI(usuarioActual.getDni());
+                JOptionPane.showMessageDialog(null, "alquilaste '" + libroActual.getTitulo() + "' exitosamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                // imprimir info completa
+            } {
+                JOptionPane.showMessageDialog(null, "El libro que deseas alquilar no está disponible o ya cuentas con un préstamo en curso", "Info", JOptionPane.ERROR_MESSAGE);
+                menuPrincipal();
+            }
         } else {
             JOptionPane.showMessageDialog(null, "El libro no está en el catálogo", "Aviso", JOptionPane.INFORMATION_MESSAGE);
             menuPrincipal();
