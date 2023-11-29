@@ -148,7 +148,10 @@ public class Main {
         // TODO
         // ingresar y validar nombre
         if (registerValidationErrors.isEmpty()) {
-            // ...
+            String nombreIngresado = JOptionPane.showInputDialog("Ingresar email:");
+            if (nombreIngresado.isEmpty()) {
+                registerValidationErrors.add("El campo 'nombre' se encuentra vacío");
+            }
         } 
 
         // ingresar y validar apellido
