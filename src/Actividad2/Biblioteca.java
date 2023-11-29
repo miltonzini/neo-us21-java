@@ -62,8 +62,17 @@ public class Biblioteca {
     }
 
     public static boolean buscarLibroPorGenero(String generoLibro) {
-        // ...
-        return false; // temp
+        ArrayList<Libro> listadoLibros = getListadoLibros();
+        boolean bool = false;
+        for (Libro libro : listadoLibros) {
+            if (libro.getGenero().equals(generoLibro)) {
+                bool = true;
+                break;
+            } else {
+                bool = false;
+            }
+        }
+        return bool;
     }
 
     

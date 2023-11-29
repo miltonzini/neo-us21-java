@@ -249,6 +249,7 @@ public class Main {
                 menuPrincipal();
             } else {
                 JOptionPane.showMessageDialog(null, "El libro no está en el catálogo", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+                menuPrincipal();
             };
 			break;
             
@@ -259,20 +260,24 @@ public class Main {
                 menuPrincipal();
             } else {
                 JOptionPane.showMessageDialog(null, "No hay libros del autor indicado en catálogo", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+                menuPrincipal();
             };
 			break;
 		case 2:
 			String generoLibro = JOptionPane.showInputDialog("Ingresar género del libro:");
-            Biblioteca.buscarLibroPorGenero(generoLibro);
+			 if (Biblioteca.buscarLibroPorGenero(generoLibro)) {
+                JOptionPane.showMessageDialog(null, "Hay libros del género indicado en catálogo", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                menuPrincipal();
+            } else {
+                JOptionPane.showMessageDialog(null, "No hay libros del género indicado en catálogo", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+                menuPrincipal();
+            };
 			break;
 		default:
 			break;
 		}
 
-        
-        // agregar método Biblioteca.buscarPorTitulo();
-        // agregar método Biblioteca.buscarPorAutor();
-        // agregar método Biblioteca.buscarPorGenero();
+
     }
 
     public static void agregarLibro() {
