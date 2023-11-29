@@ -188,11 +188,10 @@ public class Main {
     
     
     public static void menuPrincipal() {
-        JOptionPane.showMessageDialog(null, "Este es el Menú Principal", "Menú Principal", JOptionPane.INFORMATION_MESSAGE);
         String[] opciones = {"Buscar Libro", "Agregar Nuevo Libro", "Alquilar Libro", "Devolver Libro", "Salir"};
 		int seleccion = JOptionPane.showOptionDialog(
             null,
-            "Inicio", 
+            "Menú Principal", 
             "Menú Principal: ",
 		    JOptionPane.DEFAULT_OPTION, 
             JOptionPane.INFORMATION_MESSAGE, 
@@ -228,6 +227,35 @@ public class Main {
 
     public static void buscarLibro() {
         // mostrar opciones
+        String[] opciones = {"Por Título", "Por Autor", "Por Género"};
+		int seleccion = JOptionPane.showOptionDialog(
+            null,
+            "Opciones", 
+            "Elija un criterio para la búsqueda : ",
+		    JOptionPane.DEFAULT_OPTION, 
+            JOptionPane.INFORMATION_MESSAGE, 
+            null, 
+            opciones, 
+            opciones[0]
+        );
+        
+		
+		switch (seleccion) {
+		case 0:
+            String tituloLibro = JOptionPane.showInputDialog("Ingresar título del libro:");
+			Biblioteca.buscarLibroPorTitulo(tituloLibro);
+			break;
+		case 1:
+            String autorLibro = JOptionPane.showInputDialog("Ingresar autor del libro:");
+			Biblioteca.buscarLibroPorAutor(autorLibro);
+			break;
+		case 2:
+			String generoLibro = JOptionPane.showInputDialog("Ingresar género del libro:");
+            Biblioteca.buscarLibroPorGenero(generoLibro);
+			break;
+		default:
+			break;
+		}
 
         
         // agregar método Biblioteca.buscarPorTitulo();
