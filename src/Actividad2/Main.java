@@ -145,21 +145,32 @@ public class Main {
             } 
         } 
         
-        // TODO
         // ingresar y validar nombre
         if (registerValidationErrors.isEmpty()) {
-            String nombreIngresado = JOptionPane.showInputDialog("Ingresar email:");
+            String nombreIngresado = JOptionPane.showInputDialog("Ingresar Nombre:");
             if (nombreIngresado.isEmpty()) {
                 registerValidationErrors.add("El campo 'nombre' se encuentra vacío");
             }
         } 
 
         // ingresar y validar apellido
-        // ... 
-
+        if (registerValidationErrors.isEmpty()) {
+            String apellidoIngresado = JOptionPane.showInputDialog("Ingresar Apellido:");
+            if (apellidoIngresado.isEmpty()) {
+                registerValidationErrors.add("El campo 'apellido' se encuentra vacío");
+            }
+        } 
+        
         // ingresar y validar dni
-        // ... 
-
+        if (registerValidationErrors.isEmpty()) {
+            String dniIngresado = JOptionPane.showInputDialog("Ingresar DNI:");
+            if (!dniIngresado.matches("\\d{8}")) {
+                registerValidationErrors.add("El DNI debe contener exactamente 8 números");
+            }
+        }
+        
+        
+        // TODO
         // instanciar Usuario con los datos ingresados
         // ...
 
