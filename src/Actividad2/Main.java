@@ -135,48 +135,37 @@ public class Main {
         }
 
         // ingresar y validar contraseña
-        if (registerValidationErrors.isEmpty()) {
-            String contrasenaIngresada = JOptionPane.showInputDialog("Ingresar Contraseña:");
-            
-            if (contrasenaIngresada.isEmpty()) {
-                registerValidationErrors.add("El campo 'contraseña' se encuentra vacío");
-            } else if (contrasenaIngresada.length() < 8 ) {
-                registerValidationErrors.add("La contraseña debe contener al menos 8 caracteres");
-            } 
+        String contrasenaIngresada = JOptionPane.showInputDialog("Ingresar Contraseña:");
+        
+        if (contrasenaIngresada.isEmpty()) {
+            registerValidationErrors.add("El campo 'contraseña' se encuentra vacío");
+        } else if (contrasenaIngresada.length() < 8 ) {
+            registerValidationErrors.add("La contraseña debe contener al menos 8 caracteres");
         } 
         
         // ingresar y validar nombre
-        if (registerValidationErrors.isEmpty()) {
-            String nombreIngresado = JOptionPane.showInputDialog("Ingresar Nombre:");
-            if (nombreIngresado.isEmpty()) {
-                registerValidationErrors.add("El campo 'nombre' se encuentra vacío");
-            }
-        } 
+        String nombreIngresado = JOptionPane.showInputDialog("Ingresar Nombre:");
+        if (nombreIngresado.isEmpty()) {
+            registerValidationErrors.add("El campo 'nombre' se encuentra vacío");
+        }
 
         // ingresar y validar apellido
-        if (registerValidationErrors.isEmpty()) {
-            String apellidoIngresado = JOptionPane.showInputDialog("Ingresar Apellido:");
-            if (apellidoIngresado.isEmpty()) {
-                registerValidationErrors.add("El campo 'apellido' se encuentra vacío");
-            }
-        } 
+        String apellidoIngresado = JOptionPane.showInputDialog("Ingresar Apellido:");
+        if (apellidoIngresado.isEmpty()) {
+            registerValidationErrors.add("El campo 'apellido' se encuentra vacío");
+        }
         
         // ingresar y validar dni
-        if (registerValidationErrors.isEmpty()) {
-            String dniIngresado = JOptionPane.showInputDialog("Ingresar DNI:");
-            if (!dniIngresado.matches("\\d{8}")) {
-                registerValidationErrors.add("El DNI debe contener exactamente 8 números");
-            }
+        String dniIngresado = JOptionPane.showInputDialog("Ingresar DNI:");
+        if (!dniIngresado.matches("\\d{8}")) {
+            registerValidationErrors.add("El DNI debe contener exactamente 8 números");
         }
         
         
-        // TODO
-        // instanciar Usuario con los datos ingresados
-        // ...
 
 
 
-        // si hay errores, imprimirlos y volver a iniciarSesion(). Si no hay errores se pasa el menu Principal
+        // si hay errores, imprimirlos y volver a iniciarSesion(). Si no hay errores, instanciar usuario e ir al menu Principal
         if (!registerValidationErrors.isEmpty()) {
             // Imprimir errores y volver a registrarUsuario()
             StringBuilder mensajeErrores = new StringBuilder("Se encontraron errores:\n");
@@ -188,7 +177,11 @@ public class Main {
             registrarUsuario();
             
         } else {
+            // instanciar Usuario con los datos ingresados
+            Usuario nuevoUsuario = new Usuario(dniIngresado, nombreIngresado, apellidoIngresado, emailIngresado, contrasenaIngresada, false);
+            Biblioteca.agregarNuevoUsuario(nuevoUsuario);
             JOptionPane.showMessageDialog(null, "usuario registrado con éxito", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+            Biblioteca.imprimirListadoUsuarios(); // temp
             menuPrincipal();
         }
     
