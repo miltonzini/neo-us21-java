@@ -295,6 +295,17 @@ public class Main {
 
     public static void alquilarLibro() {
         // usar método Biblioteca.buscarPorTitulo();
+        String tituloLibro = JOptionPane.showInputDialog("Ingresar título del libro:");
+        if (Biblioteca.buscarLibroPorTitulo(tituloLibro)) {
+            // TODO:  si es verdadero: chequer disponibilidad
+            System.out.println("el libro está en catálogo");
+            System.out.println("chequear disponibilidad");
+        } else {
+            JOptionPane.showMessageDialog(null, "El libro no está en el catálogo", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+            menuPrincipal();
+        };
+        
+        
     }
 
     public static void devolverLibro() {
