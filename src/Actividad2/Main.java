@@ -111,11 +111,73 @@ public class Main {
     
     
     public static void registrarUsuario() {
-        // lógica de registro de usuario
+        List<String> registerValidationErrors = new ArrayList<>();
+        
+        // ingresar y validar email
+        String emailIngresado = JOptionPane.showInputDialog("Ingresar email:");
+        if (emailIngresado.isEmpty()) {
+            registerValidationErrors.add("El campo email se encuentra vacío");
+        } else if (!emailIngresado.contains("@")) {
+            registerValidationErrors.add("El email ingresado no es válido, debe contener '@'");
+        } else {
+            // Verificar si el email existe en la lista de usuarios
+            ArrayList<Usuario> listadoUsuarios = Biblioteca.getListadoUsuarios();
+            boolean emailExistente = false;
+            for (Usuario usuario : listadoUsuarios) {
+                if (usuario.getEmail().equals(emailIngresado)) {
+                    emailExistente = true;
+                    break;
+                }
+            }
+            if (emailExistente) {
+                registerValidationErrors.add("El email ingresado ya existe");
+            }
+        }
+
+        // ingresar y validar contraseña
+        if (registerValidationErrors.isEmpty()) {
+            String contrasenaIngresada = JOptionPane.showInputDialog("Ingresar Contraseña:");
+            
+            if (contrasenaIngresada.isEmpty()) {
+                registerValidationErrors.add("El campo contraseña se encuentra vacío");
+            } else if (contrasenaIngresada.length() < 8 ) {
+                registerValidationErrors.add("La contraseña debe contener al menos 8 caracteres");
+            } 
+        } 
+        
+        // TODO
+        // ingresar y validar nombre
+        if (registerValidationErrors.isEmpty()) {
+            // ...
+        } 
+
+        // ingresar y validar apellido
         // ... 
 
-        // una vez terminado dirigiar a Menu Principal
-        menuPrincipal();
+        // ingresar y validar dni
+        // ... 
+
+        // instanciar Usuario con los datos ingresados
+        // ...
+
+
+
+        // si hay errores, imprimirlos y volver a iniciarSesion(). Si no hay errores se pasa el menu Principal
+        if (!registerValidationErrors.isEmpty()) {
+            // Imprimir errores y volver a registrarUsuario()
+            StringBuilder mensajeErrores = new StringBuilder("Se encontraron errores:\n");
+            for (String error : registerValidationErrors) {
+                mensajeErrores.append("- ").append(error).append("\n");
+            }
+            JOptionPane.showMessageDialog(null, mensajeErrores.toString(), "Errores", JOptionPane.ERROR_MESSAGE);
+        
+            registrarUsuario();
+            
+        } else {
+            JOptionPane.showMessageDialog(null, "usuario registrado con éxito", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+            menuPrincipal();
+        }
+    
     }
 
     
