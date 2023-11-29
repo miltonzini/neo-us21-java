@@ -39,7 +39,7 @@ Los estudiantes deben crear una aplicación de biblioteca en Java que cumpla con
 ------ se muestra mensaje de éxito y se llama al Menú Principal
 --------- a) "buscarLibro()", se muestran 3 opciones
 ----------- buscar por título [ok]
------------ buscar por autor 
+----------- buscar por autor [ok]
 ----------- buscar por género. 
 --------- b) agregarLibro()
 ------------- se solicita secuencialmente titulo, autor y género

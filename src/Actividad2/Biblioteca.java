@@ -44,16 +44,26 @@ public class Biblioteca {
                 bool = false;
             }
         }
-        System.out.println("la variable 'bool' contiene: " + bool );
         return bool;
     }
 
-    public static void buscarLibroPorAutor(String autorLibro) {
-        // ...
+    public static boolean buscarLibroPorAutor(String autorLibro) {
+        ArrayList<Libro> listadoLibros = getListadoLibros();
+        boolean bool = false;
+        for (Libro libro : listadoLibros) {
+            if (libro.getAutor().equals(autorLibro)) {
+                bool = true;
+                break;
+            } else {
+                bool = false;
+            }
+        }
+        return bool;
     }
 
-    public static void buscarLibroPorGenero(String generoLibro) {
+    public static boolean buscarLibroPorGenero(String generoLibro) {
         // ...
+        return false; // temp
     }
 
     

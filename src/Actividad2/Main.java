@@ -248,12 +248,18 @@ public class Main {
                 JOptionPane.showMessageDialog(null, "El libro está en el catálogo", "Éxito", JOptionPane.INFORMATION_MESSAGE);
                 menuPrincipal();
             } else {
-                JOptionPane.showMessageDialog(null, "El libro no está en el catálogo", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "El libro no está en el catálogo", "Aviso", JOptionPane.INFORMATION_MESSAGE);
             };
 			break;
+            
 		case 1:
             String autorLibro = JOptionPane.showInputDialog("Ingresar autor del libro:");
-			Biblioteca.buscarLibroPorAutor(autorLibro);
+            if (Biblioteca.buscarLibroPorAutor(autorLibro)) {
+                JOptionPane.showMessageDialog(null, "Hay libros del autor indicado en catálogo", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                menuPrincipal();
+            } else {
+                JOptionPane.showMessageDialog(null, "No hay libros del autor indicado en catálogo", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+            };
 			break;
 		case 2:
 			String generoLibro = JOptionPane.showInputDialog("Ingresar género del libro:");
