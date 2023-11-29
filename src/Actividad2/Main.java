@@ -54,7 +54,7 @@ public class Main {
         Usuario usuarioEncontrado = null;
 
         if (emailIngresado.isEmpty()) {
-            loginValidationErrors.add("El campo email se encuentra vacío");
+            loginValidationErrors.add("El campo 'email' se encuentra vacío");
         } else if (!emailIngresado.contains("@")) {
             loginValidationErrors.add("El email ingresado no es válido, debe contener '@'");
         } else {
@@ -79,7 +79,7 @@ public class Main {
             String contrasenaIngresada = JOptionPane.showInputDialog("Ingresar Contraseña:");
             
             if (contrasenaIngresada.isEmpty()) {
-                loginValidationErrors.add("El campo contraseña se encuentra vacío");
+                loginValidationErrors.add("El campo 'contraseña' se encuentra vacío");
             } else if (emailIngresado.length() < 8 ) {
                 loginValidationErrors.add("La contraseña debe contener al menos 8 caracteres");
             } else {
@@ -116,7 +116,7 @@ public class Main {
         // ingresar y validar email
         String emailIngresado = JOptionPane.showInputDialog("Ingresar email:");
         if (emailIngresado.isEmpty()) {
-            registerValidationErrors.add("El campo email se encuentra vacío");
+            registerValidationErrors.add("El campo 'email' se encuentra vacío");
         } else if (!emailIngresado.contains("@")) {
             registerValidationErrors.add("El email ingresado no es válido, debe contener '@'");
         } else {
@@ -139,7 +139,7 @@ public class Main {
             String contrasenaIngresada = JOptionPane.showInputDialog("Ingresar Contraseña:");
             
             if (contrasenaIngresada.isEmpty()) {
-                registerValidationErrors.add("El campo contraseña se encuentra vacío");
+                registerValidationErrors.add("El campo 'contraseña' se encuentra vacío");
             } else if (contrasenaIngresada.length() < 8 ) {
                 registerValidationErrors.add("La contraseña debe contener al menos 8 caracteres");
             } 
