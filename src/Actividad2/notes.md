@@ -42,7 +42,7 @@ Los estudiantes deben crear una aplicación de biblioteca en Java que cumpla con
 ----------- buscar por autor [ok]
 ----------- buscar por género. [ok]
 --------- b) agregarLibro()
-------------- se solicita secuencialmente titulo, autor y género
+------------- se solicita secuencialmente titulo, autor y género [ok]
 --------- c) alquilarLibro()
 ------------- se solicita el nombre y se busca en el listado
 ---------------- si existe, se cheuquea disponibilidad ("verDisponibilidad(libro)")

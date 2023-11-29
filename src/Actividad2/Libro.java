@@ -1,15 +1,13 @@
 package Actividad2;
 
 public class Libro {
-    private int id;
     private String titulo;
     private String autor;
     private String genero;
     private Boolean disponible;
     private String alquiladoDNI;
 
-    public Libro(int id, String titulo, String autor, String genero, Boolean disponible, String alquiladoDNI) {
-        this.id = id;
+    public Libro(String titulo, String autor, String genero, Boolean disponible, String alquiladoDNI) {
         this.titulo = titulo;
         this.autor = autor;
         this.genero = genero;
@@ -18,12 +16,6 @@ public class Libro {
     }
 
     // Getters y setters
-    public int getId() {
-        return id;
-    }
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getTitulo() {
         return titulo;

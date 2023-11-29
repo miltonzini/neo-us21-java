@@ -281,7 +281,16 @@ public class Main {
     }
 
     public static void agregarLibro() {
-        //
+        String nombreLibro = JOptionPane.showInputDialog("Ingresar nombre del libro:");
+        String autorLibro = JOptionPane.showInputDialog("Ingresar autor del libro:");
+        String generoLibro = JOptionPane.showInputDialog("Ingresar género del libro:");
+
+        Libro nuevoLibro = new Libro(nombreLibro, autorLibro, generoLibro, true, null);
+        Biblioteca.agregarNuevoLibro(nuevoLibro);
+        JOptionPane.showMessageDialog(null, "libro registrado con éxito", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+        Biblioteca.imprimirListadoLibros(); // temp
+
+        
     }
 
     public static void alquilarLibro() {
