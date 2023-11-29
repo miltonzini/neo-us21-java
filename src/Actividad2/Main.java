@@ -51,8 +51,7 @@ public class Main {
 
         // Ingresar y validar email
         String emailIngresado = JOptionPane.showInputDialog("Ingresar email:");
-        Usuario usuarioEncontrado = null; // Declaramos usuarioEncontrado fuera del bloque 'else'
-
+        Usuario usuarioEncontrado = null;
 
         if (emailIngresado.isEmpty()) {
             loginValidationErrors.add("El campo email se encuentra vacío");
@@ -74,7 +73,6 @@ public class Main {
                 loginValidationErrors.add("El email ingresado no existe");
             }
         }
-
         
         // Ingresar y validar contraseña (si no hay errores en el paso anterior)
         if (loginValidationErrors.isEmpty()) {
@@ -92,8 +90,6 @@ public class Main {
                 }
             }
         }
-
-        
         
         // si hay errores, imprimirlos y volver a iniciarSesion(). Si no hay errores se pasa el menu Principal
         if (!loginValidationErrors.isEmpty()) {
@@ -112,6 +108,8 @@ public class Main {
         }
     }
 
+    
+    
     public static void registrarUsuario() {
         // lógica de registro de usuario
         // ... 
