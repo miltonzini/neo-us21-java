@@ -108,8 +108,6 @@ public class Main {
         }
     }
 
-    
-    
     public static void registrarUsuario() {
         List<String> registerValidationErrors = new ArrayList<>();
         
@@ -190,8 +188,64 @@ public class Main {
     
     
     public static void menuPrincipal() {
-        // TODO: complete this method
         JOptionPane.showMessageDialog(null, "Este es el Menú Principal", "Menú Principal", JOptionPane.INFORMATION_MESSAGE);
+        String[] opciones = {"Buscar Libro", "Agregar Nuevo Libro", "Alquilar Libro", "Devolver Libro", "Salir"};
+		int seleccion = JOptionPane.showOptionDialog(
+            null,
+            "Inicio", 
+            "Menú Principal: ",
+		    JOptionPane.DEFAULT_OPTION, 
+            JOptionPane.INFORMATION_MESSAGE, 
+            null, 
+            opciones, 
+            opciones[0]
+        );
+        
+		
+		switch (seleccion) {
+		case 0:
+			buscarLibro();
+			break;
+		case 1:
+            agregarLibro();
+			break;
+		case 2:
+            alquilarLibro();
+			break;
+        case 3:
+            devolverLibro();
+			break;
+        case 4:
+			System.exit(0);
+			break;
+		default:
+			break;
+		}
+    }
+
+
+    
+
+    public static void buscarLibro() {
+        // mostrar opciones
+
+        
+        // agregar método Biblioteca.buscarPorTitulo();
+        // agregar método Biblioteca.buscarPorAutor();
+        // agregar método Biblioteca.buscarPorGenero();
+    }
+
+    public static void agregarLibro() {
+        //
+    }
+
+    public static void alquilarLibro() {
+        // usar método Biblioteca.buscarPorTitulo();
+    }
+
+    public static void devolverLibro() {
+        // usar Usuario.getPoseeLibro();
+        // para eso será necesario instanciar Usuario usuarioActual con los datos del usuario que se registró o inició sesión. Eso debe hacerse en las respectivas funciones
     }
 }
 
