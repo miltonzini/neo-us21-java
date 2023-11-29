@@ -33,6 +33,18 @@ public class Biblioteca {
         return listadoLibros;
     }
 
+    public static void buscarLibroPorTitulo(String tituloLibro) {
+        // ...
+    }
+
+    public static void buscarLibroPorAutor(String autorLibro) {
+        // ...
+    }
+
+    public static void buscarLibroPorGenero(String generoLibro) {
+        // ...
+    }
+
     
 
     // TODO: clean up temp methods
