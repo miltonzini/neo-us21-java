@@ -19,8 +19,10 @@ public class Biblioteca {
         listadoLibros.add(new Libro(00, "El Aleph", "Jorge Luis Borges", "no especificado", true, null));
         listadoLibros.add(new Libro(01, "Rayuela", "Julio Cortazar", "novela", true, null));
         listadoLibros.add(new Libro(02, "El Tunel", "Ernesto Sábato", "novela", true, null));
+    }
 
-
+    public static void agregarNuevoUsuario(Usuario nuevoUsuario) {
+        listadoUsuarios.add(nuevoUsuario);
     }
 
     public static ArrayList<Usuario> getListadoUsuarios() {
