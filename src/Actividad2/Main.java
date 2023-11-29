@@ -242,8 +242,14 @@ public class Main {
 		
 		switch (seleccion) {
 		case 0:
+            // Buscar libro por título
             String tituloLibro = JOptionPane.showInputDialog("Ingresar título del libro:");
-			Biblioteca.buscarLibroPorTitulo(tituloLibro);
+			if (Biblioteca.buscarLibroPorTitulo(tituloLibro)) {
+                JOptionPane.showMessageDialog(null, "El libro está en el catálogo", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                menuPrincipal();
+            } else {
+                JOptionPane.showMessageDialog(null, "El libro no está en el catálogo", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+            };
 			break;
 		case 1:
             String autorLibro = JOptionPane.showInputDialog("Ingresar autor del libro:");

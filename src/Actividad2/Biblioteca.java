@@ -33,8 +33,19 @@ public class Biblioteca {
         return listadoLibros;
     }
 
-    public static void buscarLibroPorTitulo(String tituloLibro) {
-        // ...
+    public static boolean buscarLibroPorTitulo(String tituloLibro) {
+        ArrayList<Libro> listadoLibros = getListadoLibros();
+        boolean bool = false;
+        for (Libro libro : listadoLibros) {
+            if (libro.getTitulo().equals(tituloLibro)) {
+                bool = true;
+                break;
+            } else {
+                bool = false;
+            }
+        }
+        System.out.println("la variable 'bool' contiene: " + bool );
+        return bool;
     }
 
     public static void buscarLibroPorAutor(String autorLibro) {
