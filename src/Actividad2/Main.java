@@ -302,27 +302,34 @@ public class Main {
     }
 
     public static void alquilarLibro() {
-        // usar método Biblioteca.buscarPorTitulo();
         String tituloLibro = JOptionPane.showInputDialog("Ingresar título del libro:");
-        if (Biblioteca.buscarLibroPorTitulo(tituloLibro)) {
-            Libro libroActual = Biblioteca.getLibro(tituloLibro);
-            if (libroActual.getDisponible() && !usuarioActual.getPoseeLibro() ) {
-                usuarioActual.setPoseeLibro(true);
-                libroActual.setDisponible(false);
-                libroActual.setAlquiladoDNI(usuarioActual.getDni());
-                JOptionPane.showMessageDialog(null, "alquilaste '" + libroActual.getTitulo() + "' exitosamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-                // imprimir info completa
-            } {
-                JOptionPane.showMessageDialog(null, "El libro que deseas alquilar no está disponible o ya cuentas con un préstamo en curso", "Info", JOptionPane.ERROR_MESSAGE);
-                menuPrincipal();
+        Libro libroActual = Biblioteca.getLibro(tituloLibro);
+    
+        if (libroActual != null) {
+            if (libroActual.getDisponible()) {
+                if (!usuarioActual.getPoseeLibro()) {
+                    usuarioActual.setPoseeLibro(true);
+                    libroActual.setDisponible(false);
+                    libroActual.setAlquiladoDNI(usuarioActual.getDni());
+                    Biblioteca.imprimirInfoCompleta(); // temp debug
+                    JOptionPane.showMessageDialog(null, "Has alquilado '" + libroActual.getTitulo() + "' exitosamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Ya tienes un préstamo en curso, no puedes alquilar más libros.", "Info", JOptionPane.ERROR_MESSAGE);
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "El libro que deseas alquilar no está disponible.", "Info", JOptionPane.ERROR_MESSAGE);
             }
         } else {
             JOptionPane.showMessageDialog(null, "El libro no está en el catálogo", "Aviso", JOptionPane.INFORMATION_MESSAGE);
-            menuPrincipal();
-        };
-        
-        
+        }
+    
+        Biblioteca.imprimirInfoCompleta(); // temp
+        menuPrincipal();
     }
+    
+        
+        
+    
 
     public static void devolverLibro() {
         // usar Usuario.getPoseeLibro();
