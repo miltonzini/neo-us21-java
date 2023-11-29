@@ -33,10 +33,10 @@ Los estudiantes deben crear una aplicación de biblioteca en Java que cumpla con
 -- precargar algunos libros de ejemplo [ok]
 -- precargar usuarios de ejemplo [ok]
 -luego
--- usar un menú con JOptions con las siguientes jerarquía de opciones ["menuInicio()"]:
----- 1) Iniciar sesión
------- se solicita al usuario el email y la contrasena, se validan los datos ["validarUsuario()"] y se instancia un nuevo Usuario
------- se saluda al usuario y se le muestran las opciones principales
+-- usar un menú con JOptions con las siguientes jerarquía de opciones ["menuInicio()"]: [~~]
+---- 1) Iniciar sesión [ok]
+------ se solicita al usuario el email y la contrasena, se validan los datos ["validarUsuario()"] y se instancia un nuevo Usuario [ok]
+------ se muestra mensaje de éxito y se llama al Menú Principal
 --------- a) "buscarLibro()": 
 ----------- se da la opción de elegir por título, autor o género. 
 ------------- si se encontró, mostrar info del libro ["mostrarInfoLibro()"].
@@ -56,7 +56,7 @@ Los estudiantes deben crear una aplicación de biblioteca en Java que cumpla con
 ---------------- si es true, imprimir mensajeSuccess"has devuelto el libro: '' ") y redrigir a menuPrincipal().
 ---------------- si es false, imprimir mensajeError("no adeudas ningún libro") y redrigir a menuPrincipal().
 --------- e) Salir
----- 2) registrarUsuario(): se validan los datos 
+---- 2) Registrarme [registrarUsuario()]: se validan los datos 
 --------- si hay error se muestra el mensaje correspondiente y se vuelve a registrarUsuario() 
 --------- si es success, se redirige a menuPrincipal()
 ---- 3) Salir.
