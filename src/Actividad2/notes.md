@@ -56,10 +56,10 @@ Los estudiantes deben crear una aplicación de biblioteca en Java que cumpla con
 ---------------- si es true, imprimir mensajeSuccess"has devuelto el libro: '' ") y redrigir a menuPrincipal().
 ---------------- si es false, imprimir mensajeError("no adeudas ningún libro") y redrigir a menuPrincipal().
 --------- e) Salir
----- 2) Registrarme [registrarUsuario()]: se validan los datos 
---------- si hay error se muestra el mensaje correspondiente y se vuelve a registrarUsuario() 
---------- si es success, se redirige a menuPrincipal()
----- 3) Salir.
+---- 2) Registrarme [registrarUsuario()]: se validan los datos  [ok]
+--------- si hay error se muestra el mensaje correspondiente y se vuelve a registrarUsuario()  
+--------- si es success, se redirige a menuPrincipal() [ok]
+---- 3) Salir. [ok]
 
 
 -Clases a crear: 
