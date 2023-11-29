@@ -10,6 +10,7 @@ public class Biblioteca {
         // precargar usuarios de ejemplo
         listadoUsuarios.add(new Usuario("20983245", "Carlos", "Gomez", "carlos@ejemplo.com", "carlos123", false));
         listadoUsuarios.add(new Usuario("38123546", "Ana", "Díaz", "anadiaz@ejemplo.com", "conejo", false));
+        listadoUsuarios.add(new Usuario("40123654", "Lucas", "Lucero", "mail@mail.com", "conejo", true));
 
         // imprimirListadoUsuarios();
     }
@@ -17,7 +18,7 @@ public class Biblioteca {
     public static void precargarLibros() {
         // precargar libros de ejemplo
         listadoLibros.add(new Libro("El Aleph", "Jorge Luis Borges", "no especificado", true, null));
-        listadoLibros.add(new Libro("Rayuela", "Julio Cortazar", "novela", true, null));
+        listadoLibros.add(new Libro("Rayuela", "Julio Cortazar", "novela", true, "40123654"));
         listadoLibros.add(new Libro("El Tunel", "Ernesto Sábato", "novela", true, null));
     }
 
