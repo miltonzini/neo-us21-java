@@ -41,14 +41,13 @@ Los estudiantes deben crear una aplicación de biblioteca en Java que cumpla con
 ----------- buscar por título [ok]
 ----------- buscar por autor [ok]
 ----------- buscar por género. [ok]
---------- b) agregarLibro()
+--------- b) agregarLibro() [ok]
 ------------- se solicita secuencialmente titulo, autor y género [ok]
---------- c) alquilarLibro()
+--------- c) alquilarLibro() [ok]
 ------------- se solicita el nombre y se busca en el listado
 ---------------- si existe, se cheuquea disponibilidad ("verDisponibilidad(libro)")
---------------------- si está disponible, se muestra mensaje de success y se redirige a menuPrincipal().
---------------------- si no está disponible, se muestra mensaje de error y se redirige a menuPrincipal().
----------------- si no existe, se vuelve mensaje de error y se redirige al menú
+--------------------- si está disponible o el usuario ya cuenta con un préstamo se muestra mensaje de error y se redirige al manú [ok]
+---------------- si no existe, se vuelve mensaje de error y se redirige al menú [ok]
 --------- d) devolverLibro()
 ------------ se chequea si el usuario tiene libros en su poder.
 ---------------- si es true, imprimir mensajeSuccess"has devuelto el libro: '' ") y redrigir a menuPrincipal().
