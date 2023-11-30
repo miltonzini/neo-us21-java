@@ -107,7 +107,6 @@ public class Main {
             
         } else {
             usuarioActual = usuarioEncontrado;
-            System.out.println("El usuario actual es: " + usuarioActual.getNombre() + " " + usuarioActual.getApellido()); // temp
             JOptionPane.showMessageDialog(null, "Sesión iniciada", "Éxito", JOptionPane.INFORMATION_MESSAGE);
             menuPrincipal();
         }
@@ -187,7 +186,6 @@ public class Main {
             Biblioteca.imprimirListadoUsuarios(); // temp
             
             usuarioActual = nuevoUsuario;
-            System.out.println("El usuario actual es: " + usuarioActual.getNombre() + " " + usuarioActual.getApellido()); // temp
             menuPrincipal();
         }
     
@@ -330,23 +328,18 @@ public class Main {
     
 
     public static void devolverLibro() {
-        // chequear si usuarioActual.getPoseeLibro()
-        // -- en caso afirmativo: buscar en listadoLibros aquel libro cuyo alquiladoDNI coincida con usuarioActual.getDNI. 
-        //    luego realizarlas operaciones necesarias y redirigir a menuPrincipal
-        // -- en caso negativo: mensaje "usted no tiene libros alquilados" y redirigir a menuPrincipal
-
         if (usuarioActual.getPoseeLibro() != null) {
             usuarioActual.setPoseeLibro(null);
+
             Libro libroActual = Biblioteca.getLibroPorAlquiladoDni(usuarioActual.getDni());
             libroActual.setAlquiladoDNI(null);
             libroActual.setDisponible(true);
+            
             JOptionPane.showMessageDialog(null, "has devuelto '" + libroActual.getTitulo() + "'.", "Info", JOptionPane.INFORMATION_MESSAGE);
         } else {
             JOptionPane.showMessageDialog(null, "usted no tiene libros alquilados.", "Info", JOptionPane.ERROR_MESSAGE);
         }
-        Biblioteca.imprimirInfoCompleta(); // temp
         menuPrincipal();
-
     }
 }
 
