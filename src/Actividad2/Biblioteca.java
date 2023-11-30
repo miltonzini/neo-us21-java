@@ -11,6 +11,7 @@ public class Biblioteca {
         listadoUsuarios.add(new Usuario("20983245", "Carlos", "Gomez", "carlos@ejemplo.com", "carlos123", false));
         listadoUsuarios.add(new Usuario("38123546", "Ana", "Díaz", "anadiaz@ejemplo.com", "conejo", false));
         listadoUsuarios.add(new Usuario("40123654", "Lucas", "Lucero", "mail@mail.com", "conejo", true));
+        listadoUsuarios.add(new Usuario("12345678", "Homero", "Simpson", "asd@asd.com", "conejo", true));
 
         // imprimirListadoUsuarios();
     }
@@ -20,6 +21,7 @@ public class Biblioteca {
         listadoLibros.add(new Libro("El Aleph", "Jorge Luis Borges", "no especificado", true, null));
         listadoLibros.add(new Libro("Rayuela", "Julio Cortazar", "novela", true, "40123654"));
         listadoLibros.add(new Libro("El Tunel", "Ernesto Sábato", "novela", true, null));
+        listadoLibros.add(new Libro("La Odisea", "Homero", "no especificado", true, "12345678"));
     }
 
     public static void agregarNuevoUsuario(Usuario nuevoUsuario) {
@@ -36,10 +38,7 @@ public class Biblioteca {
         for (Libro libro : listadoLibros) {
             if (libro.getTitulo().equals(tituloLibro)) {
                 libroEncontrado = libro;
-                System.out.println("debug: pasó por libro encontrado ok");
                 break;
-            } else {
-                System.out.println("debug: pasó por libro encontrado false");
             }
         }
         return libroEncontrado;
