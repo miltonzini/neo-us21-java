@@ -201,7 +201,7 @@ public class Main {
 
     
     public static void menuPrincipal() {
-        String[] opciones = {"Buscar Libro", "Agregar Nuevo Libro", "Alquilar Libro", "Devolver Libro", "Salir"};
+        String[] opciones = {"Buscar Libro", "Agregar Nuevo Libro", "Alquilar Libro", "Devolver Libro", "Informe Completo", "Salir"};
 		int seleccion = JOptionPane.showOptionDialog(
             null,
             "Menú Principal", 
@@ -244,6 +244,13 @@ public class Main {
             }
 			break;
         case 4:
+            try {
+                informeCompleto();
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Error: no se pudo acceder al informe.", "Errores", JOptionPane.ERROR_MESSAGE);
+            }
+			break;
+        case 5:
 			System.exit(0);
 			break;
 		default:
@@ -364,6 +371,11 @@ public class Main {
             JOptionPane.showMessageDialog(null, "usted no tiene libros alquilados.", "Info", JOptionPane.ERROR_MESSAGE);
         }
         menuPrincipal();
+    }
+
+    public static void informeCompleto() {
+        System.out.println("se accedió a Informe Completo");
+        // ...
     }
 }
 
