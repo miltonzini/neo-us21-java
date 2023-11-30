@@ -323,7 +323,7 @@ public class Main {
         Libro nuevoLibro = new Libro(nombreLibro, autorLibro, generoLibro, true, null);
         Biblioteca.agregarNuevoLibro(nuevoLibro);
         JOptionPane.showMessageDialog(null, "libro registrado con éxito", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-        Biblioteca.imprimirListadoLibros(); // temp
+        menuPrincipal();
 
         
     }
