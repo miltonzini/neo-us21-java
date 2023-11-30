@@ -46,6 +46,19 @@ public class Biblioteca {
     
     }
 
+    public static Libro getLibroPorAlquiladoDni(String dni) {
+        ArrayList<Libro> listadoLibros = getListadoLibros();
+        Libro libroEncontrado = null;
+        for (Libro libro : listadoLibros) {
+            if (libro.getAlquiladoDNI().equals(dni)) {
+                libroEncontrado = libro;
+                break;
+            } 
+        }
+        return libroEncontrado;
+    
+    }
+
     public static ArrayList<Usuario> getListadoUsuarios() {
         return listadoUsuarios;
     }    
