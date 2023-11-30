@@ -19,9 +19,9 @@ public class Biblioteca {
     public static void precargarLibros() {
         // precargar libros de ejemplo
         listadoLibros.add(new Libro("El Aleph", "Jorge Luis Borges", "no especificado", true, null));
-        listadoLibros.add(new Libro("Rayuela", "Julio Cortazar", "novela", true, "40123654"));
+        listadoLibros.add(new Libro("Rayuela", "Julio Cortazar", "novela", false, "40123654"));
         listadoLibros.add(new Libro("El Tunel", "Ernesto Sábato", "novela", true, null));
-        listadoLibros.add(new Libro("La Odisea", "Homero", "no especificado", true, "12345678"));
+        listadoLibros.add(new Libro("La Odisea", "Homero", "no especificado", false, "12345678"));
     }
 
     public static void agregarNuevoUsuario(Usuario nuevoUsuario) {
