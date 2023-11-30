@@ -375,7 +375,9 @@ public class Main {
 
     public static void informeCompleto() {        
         List<Libro> listadoLibros = Biblioteca.getListadoLibros();
-        StringBuilder mensajeLibros = new StringBuilder("Listado:\n");
+        List<Usuario> listadoUsuarios = Biblioteca.getListadoUsuarios();
+        
+        StringBuilder mensajeLibros = new StringBuilder("Listado Libros:\n");
 
         listadoLibros.forEach(libro -> {
             String disponibilidad = "";
@@ -387,7 +389,13 @@ public class Main {
             mensajeLibros.append(" - " + libro.getTitulo() + " (" + libro.getAutor() + ")" + " | " +  disponibilidad + "\n");
         });
 
-        JOptionPane.showMessageDialog(null, mensajeLibros.toString(), "Informe", JOptionPane.INFORMATION_MESSAGE);
+        StringBuilder mensajeUsuarios = new StringBuilder("Listado Usuarios:\n");
+
+        listadoUsuarios.forEach(usuario -> {
+            mensajeUsuarios.append(" - " + usuario.getNombre() + " " + usuario.getNombre() + " | DNI: " +  usuario.getDni() + ".\n");
+        });
+
+        JOptionPane.showMessageDialog(null, mensajeLibros.toString() + "\n\n" + mensajeUsuarios.toString(), "Informe", JOptionPane.INFORMATION_MESSAGE);
 
         menuPrincipal();
 
