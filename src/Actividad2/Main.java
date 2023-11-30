@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.swing.JOptionPane;
 
+import Actividad2.Mensajes.MensajeInfo;;
+
 public class Main {
     private static Usuario usuarioActual; // Variable global para almacenar el usuario actual
 
@@ -18,6 +20,13 @@ public class Main {
     }
     
     public static void menuInicio() {
+
+        // Temp
+        // testeando Mensajes
+        Mensajes.MensajeInfo mensajePrueba = new Mensajes.MensajeInfo("Mensaje de prueba", "Título del mensaje");
+        mensajePrueba.mostrar();
+        // - temp
+
         // Cuadro de Diálogo con opciones
         String[] opciones = {"Iniciar Sesión", "Registrarme", "Salir"};
 		int seleccion = JOptionPane.showOptionDialog(
