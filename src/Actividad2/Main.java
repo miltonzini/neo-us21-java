@@ -34,10 +34,18 @@ public class Main {
 		
 		switch (seleccion) {
 		case 0:
-			iniciarSesion();
+            try {
+                iniciarSesion();
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Error: no se pudo iniciar sesión.", "Errores", JOptionPane.ERROR_MESSAGE);
+            }
 			break;
 		case 1:
-			registrarUsuario();
+            try {
+                registrarUsuario();
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Error: no se pudo iniciar sesión.", "Errores", JOptionPane.ERROR_MESSAGE);
+            }
 			break;
 		case 2:
 			System.exit(0);
@@ -208,16 +216,32 @@ public class Main {
 		
 		switch (seleccion) {
 		case 0:
-			buscarLibro();
+            try {
+                buscarLibro();
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Error: no se pudo buscar libro.", "Errores", JOptionPane.ERROR_MESSAGE);
+            }
 			break;
 		case 1:
-            agregarLibro();
+            try {
+                agregarLibro();
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Error: no se pudo agregar libro.", "Errores", JOptionPane.ERROR_MESSAGE);
+            }
 			break;
 		case 2:
-            alquilarLibro();
+            try {
+                alquilarLibro();
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Error: no se pudo alquilar libro.", "Errores", JOptionPane.ERROR_MESSAGE);
+            }
 			break;
         case 3:
-            devolverLibro();
+            try {
+                devolverLibro();
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Error: no se pudo devolver libro.", "Errores", JOptionPane.ERROR_MESSAGE);
+            }
 			break;
         case 4:
 			System.exit(0);
