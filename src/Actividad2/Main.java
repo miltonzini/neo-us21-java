@@ -373,9 +373,24 @@ public class Main {
         menuPrincipal();
     }
 
-    public static void informeCompleto() {
-        System.out.println("se accedió a Informe Completo");
-        // ...
+    public static void informeCompleto() {        
+        List<Libro> listadoLibros = Biblioteca.getListadoLibros();
+        StringBuilder mensajeLibros = new StringBuilder("Listado:\n");
+
+        listadoLibros.forEach(libro -> {
+            String disponibilidad = "";
+            if (libro.getDisponible() == true) {
+                disponibilidad = "(Disponible)";
+            } else {
+                disponibilidad = "(No disponible)";
+            }
+            mensajeLibros.append(" - " + libro.getTitulo() + " (" + libro.getAutor() + ")" + " | " +  disponibilidad + "\n");
+        });
+
+        JOptionPane.showMessageDialog(null, mensajeLibros.toString(), "Informe", JOptionPane.INFORMATION_MESSAGE);
+
+        menuPrincipal();
+
     }
 }
 
