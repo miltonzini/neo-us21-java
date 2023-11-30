@@ -6,22 +6,22 @@ Los estudiantes deben crear una aplicación de biblioteca en Java que cumpla con
 
 ## Requisitos Funcionales:
 1. Gestión de Libros:
-   - Los usuarios pueden agregar nuevos libros a la biblioteca. // [contemplado en pseudocódigo]
-   - Los usuarios pueden eliminar libros de la biblioteca. // [contemplado en pseudocódigo]
+   - Los usuarios pueden agregar nuevos libros a la biblioteca. // [ok]
+   - Los usuarios pueden eliminar libros de la biblioteca. // [ok]
 2. Gestión de Usuarios:
-   - Los usuarios pueden registrarse en el sistema. // [contemplado en pseudocódigo]
-   - Los usuarios pueden alquilar libros. // [contemplado en pseudocódigo]
-   - Los usuarios deben devolver los libros // [contemplado en pseudocódigo]
+   - Los usuarios pueden registrarse en el sistema. // [ok]
+   - Los usuarios pueden alquilar libros. // [ok]
+   - Los usuarios deben devolver los libros // [ok]
 4. Consultas y Búsquedas:
-   - Los usuarios pueden buscar libros en la biblioteca por título, autor o género. // [contemplado en pseudocódigo]
+   - Los usuarios pueden buscar libros en la biblioteca por título, autor o género. // [ok]
 5. Informes y Estadísticas:
-   - Los usuarios pueden generar informes o estadísticas sobre el uso de la biblioteca. // [contemplado en pseudocódigo]
+   - Los usuarios pueden generar informes o estadísticas sobre el uso de la biblioteca. // [ok]
 
 ## Requisitos Técnicos:
-- Utilizar programación orientada a objetos para diseñar las clases y objetos necesarios. // [contemplado en pseudocódigo]
-- Implementar manejo de excepciones para situaciones como devoluciones fuera de plazo o búsqueda de libros inexistentes. // !!
+- Utilizar programación orientada a objetos para diseñar las clases y objetos necesarios. // [ok]
+- Implementar manejo de excepciones para situaciones como devoluciones fuera de plazo o búsqueda de libros inexistentes. // [ok]
 - Utilizar interfaces y clases abstractas para definir un sistema de notificación a los usuarios. // [pendiente]
-- Aplicar programación funcional y Streams para consultas y generación de informes o estadísticas simples. // [pendiente]
+- Aplicar programación funcional y Streams para consultas y generación de informes o estadísticas simples. // [ok]
 
 
 
@@ -29,11 +29,11 @@ Los estudiantes deben crear una aplicación de biblioteca en Java que cumpla con
 
 # PSEUDOCÓDIGO / NOTAS
 -en Main, llamar a métodos iniciales de Biblioteca [ok]
--- crear Listas listadoUsuarios y listadoLibros. 
+-- crear Listas listadoUsuarios y listadoLibros. [pk]
 -- precargar algunos libros de ejemplo [ok]
 -- precargar usuarios de ejemplo [ok]
 -luego
--- usar un menú con JOptions con las siguientes jerarquía de opciones ["menuInicio()"]: [~~]
+-- usar un menú con JOptions con las siguientes jerarquía de opciones ["menuInicio()"]: [ok]
 ---- 1) Iniciar sesión [ok]
 ------ se solicita al usuario el email y la contrasena, se validan los datos ["validarUsuario()"] y se instancia un nuevo Usuario [ok]
 ------ se muestra mensaje de éxito y se llama al Menú Principal
@@ -48,7 +48,7 @@ Los estudiantes deben crear una aplicación de biblioteca en Java que cumpla con
 ---------------- si existe, se cheuquea disponibilidad ("verDisponibilidad(libro)")
 --------------------- si está disponible o el usuario ya cuenta con un préstamo se muestra mensaje de error y se redirige al manú [ok]
 ---------------- si no existe, se vuelve mensaje de error y se redirige al menú [ok]
---------- d) devolverLibro()
+--------- d) devolverLibro() [ok]
 ------------ se chequea si el usuario tiene libros en su poder.
 ---------------- si es true, imprimir mensajeSuccess"has devuelto el libro: '' ") y redrigir a menuPrincipal().
 ---------------- si es false, imprimir mensajeError("no adeudas ningún libro") y redrigir a menuPrincipal().
@@ -60,11 +60,11 @@ Los estudiantes deben crear una aplicación de biblioteca en Java que cumpla con
 
 
 -Clases a crear: 
------ Main  [~~~]
+----- Main  [ok]
 --------- llama a precarga los datos iniciales y llama a menuInicio()
------ Biblioteca [~~~]
+----- Biblioteca [ok]
 --------- contiene las listas de libros y usuarios
 ----- Usuario [ok]
 --------- atributos: dni, nombre, apellido, email, contrasena, poseeLibro 
 ----- Libro [ok]
---------- atributos: ID, título, autor, género, estado(noDisponible|disponible), alquiladoDNI
+--------- atributos: ID, título, autor, género, estado(noDisponible|disponible), alquiladoDNI [ok]
