@@ -194,7 +194,6 @@ public class Main {
     }
 
     
-    
     public static void menuPrincipal() {
         String[] opciones = {"Buscar Libro", "Agregar Nuevo Libro", "Alquilar Libro", "Devolver Libro", "Salir"};
 		int seleccion = JOptionPane.showOptionDialog(
@@ -229,7 +228,6 @@ public class Main {
 			break;
 		}
     }
-
 
     
 
@@ -332,8 +330,23 @@ public class Main {
     
 
     public static void devolverLibro() {
-        // usar Usuario.getPoseeLibro();
-        // para eso será necesario instanciar Usuario usuarioActual con los datos del usuario que se registró o inició sesión. Eso debe hacerse en las respectivas funciones
+        // chequear si usuarioActual.getPoseeLibro()
+        // -- en caso afirmativo: buscar en listadoLibros aquel libro cuyo alquiladoDNI coincida con usuarioActual.getDNI. 
+        //    luego realizarlas operaciones necesarias y redirigir a menuPrincipal
+        // -- en caso negativo: mensaje "usted no tiene libros alquilados" y redirigir a menuPrincipal
+
+        if (usuarioActual.getPoseeLibro()) {
+            usuarioActual.setPoseeLibro(null);
+            Libro libroActual = Biblioteca.getLibroPorAlquiladoDni(usuarioActual.getDni());
+            libroActual.setAlquiladoDNI(null);
+            libroActual.setDisponible(true);
+            JOptionPane.showMessageDialog(null, "has devuelto '" + libroActual.getTitulo() + "'.", "Info", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, "usted no tiene libros alquilados.", "Info", JOptionPane.ERROR_MESSAGE);
+        }
+        Biblioteca.imprimirInfoCompleta(); // temp
+        menuPrincipal();
+
     }
 }
 
