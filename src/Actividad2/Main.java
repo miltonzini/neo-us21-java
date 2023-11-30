@@ -335,7 +335,7 @@ public class Main {
         //    luego realizarlas operaciones necesarias y redirigir a menuPrincipal
         // -- en caso negativo: mensaje "usted no tiene libros alquilados" y redirigir a menuPrincipal
 
-        if (usuarioActual.getPoseeLibro()) {
+        if (usuarioActual.getPoseeLibro() != null) {
             usuarioActual.setPoseeLibro(null);
             Libro libroActual = Biblioteca.getLibroPorAlquiladoDni(usuarioActual.getDni());
             libroActual.setAlquiladoDNI(null);
