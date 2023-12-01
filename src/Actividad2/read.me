@@ -21,8 +21,14 @@ informeCompleto(): Muestra un resumen de los libros y usuarios.
 En cuanto a los datos de muestra proporcionados:
 
 Hay una lista precargada de usuarios y libros en Biblioteca.precargarUsuarios() y Biblioteca.precargarLibros() respectivamente.
-Los usuarios precargados incluyen ejemplos como Carlos Gomez, Ana Díaz, Lucas Lucero, y Homero Simpson.
-Los libros precargados incluyen títulos como "El Aleph", "Rayuela", "El Tunel", y "La Odisea".
 A fines prácticos se da por sentado, arbitrariamente, lo siguiente:
 1) hay un solo libro para cada título
 2) cada usuario puede alquilar 1 solo libro por vez
+
+
+## Ejemplos de caso de uso:
+1) iniciar sesión con el email "mail@mail.com" y la constaseña "conejo". Se trata del usuario Lucas Lucero, que ya cuenta con un libro alquilado
+2) iniciar sesión con el email "carlos@ejemplo.com" y la constaseña "carlos123". Se trata del usuario Lucas Lucero, que no cuenta con libros alquilado
+3) registrarse con un mail nuevo.
+
+Notas: Se implementarion validaciones de datos, streams, clases abstractas, bloques try/catch, instanciación anónima de clases (para mostrar mensajes), etc.
