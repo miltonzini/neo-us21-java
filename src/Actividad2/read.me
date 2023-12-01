@@ -1,15 +1,28 @@
-La aplicación inicia en Main.java, se utiliza JPanel para la interacción con el usuario.
+# Proyecto Biblioteca
+## Lógica del programa:
 
-Descripción: se trata de una aplicación que simula el funcionamiento de una biblioteca, donde los usuarios pueden registrarse e iniciar sesión
-para luego realizar operaciones como:
-- buscar libros con diferentes criterios (título, autor o género)
-- alquilar un libro
-- devolver un libro
-- agregar libros nuevos
+## Inicio de sesión y registro:
 
-La aplicación se encarga también de la validación y muestra de informes
+menuInicio() permite iniciar sesión o registrarse.
+iniciarSesion() valida el correo electrónico y la contraseña ingresados.
+registrarUsuario() valida y crea un nuevo usuario.
 
-Nota: 
+## Menú Principal:
+
+Después de iniciar sesión o registrarse, menuPrincipal() permite buscar libros, agregar nuevos libros, alquilar y devolver libros, ver un informe completo o salir del programa.
+Funciones específicas:
+
+buscarLibro(): Busca libros por título, autor o género.
+agregarLibro(): Agrega un nuevo libro al catálogo.
+alquilarLibro(): Permite a un usuario alquilar un libro disponible.
+devolverLibro(): Permite a un usuario devolver un libro alquilado.
+informeCompleto(): Muestra un resumen de los libros y usuarios.
+
+En cuanto a los datos de muestra proporcionados:
+
+Hay una lista precargada de usuarios y libros en Biblioteca.precargarUsuarios() y Biblioteca.precargarLibros() respectivamente.
+Los usuarios precargados incluyen ejemplos como Carlos Gomez, Ana Díaz, Lucas Lucero, y Homero Simpson.
+Los libros precargados incluyen títulos como "El Aleph", "Rayuela", "El Tunel", y "La Odisea".
 A fines prácticos se da por sentado, arbitrariamente, lo siguiente:
 1) hay un solo libro para cada título
 2) cada usuario puede alquilar 1 solo libro por vez
