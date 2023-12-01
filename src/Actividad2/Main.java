@@ -40,14 +40,14 @@ public class Main {
             try {
                 iniciarSesion();
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Error: no se pudo iniciar sesión.", "Errores", JOptionPane.ERROR_MESSAGE);
+                (new Mensajes.MensajeError("Error: no se pudo iniciar sesión.", "Error")).mostrar();
             }
 			break;
 		case 1:
             try {
                 registrarUsuario();
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Error: no se pudo iniciar sesión.", "Errores", JOptionPane.ERROR_MESSAGE);
+                (new Mensajes.MensajeError("Error: no se pudo registrar usuario.", "Error")).mostrar();
             }
 			break;
 		case 2:
@@ -111,7 +111,7 @@ public class Main {
             for (String error : loginValidationErrors) {
                 mensajeErrores.append("- ").append(error).append("\n");
             }
-            JOptionPane.showMessageDialog(null, mensajeErrores.toString(), "Errores", JOptionPane.ERROR_MESSAGE);
+            (new Mensajes.MensajeError(mensajeErrores.toString(), "Errores")).mostrar();
 
             iniciarSesion();
             
@@ -185,7 +185,7 @@ public class Main {
             for (String error : registerValidationErrors) {
                 mensajeErrores.append("- ").append(error).append("\n");
             }
-            JOptionPane.showMessageDialog(null, mensajeErrores.toString(), "Errores", JOptionPane.ERROR_MESSAGE);
+            (new Mensajes.MensajeError(mensajeErrores.toString(), "Errores")).mostrar();
         
             registrarUsuario();
             
@@ -222,35 +222,35 @@ public class Main {
             try {
                 buscarLibro();
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Error: no se pudo buscar libro.", "Errores", JOptionPane.ERROR_MESSAGE);
+                (new Mensajes.MensajeError("Error: Error: no se pudo buscar libro.", "Error")).mostrar();
             }
 			break;
 		case 1:
             try {
                 agregarLibro();
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Error: no se pudo agregar libro.", "Errores", JOptionPane.ERROR_MESSAGE);
+                (new Mensajes.MensajeError("Error: no se pudo agregar libro.", "Error")).mostrar();
             }
 			break;
 		case 2:
             try {
                 alquilarLibro();
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Error: no se pudo alquilar libro.", "Errores", JOptionPane.ERROR_MESSAGE);
+                (new Mensajes.MensajeError("Error: no se pudo alquilar libro.", "Error")).mostrar();
             }
 			break;
         case 3:
             try {
                 devolverLibro();
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Error: no se pudo devolver libro.", "Errores", JOptionPane.ERROR_MESSAGE);
+                (new Mensajes.MensajeError("Error: no se pudo devolver libro.", "Error")).mostrar();
             }
 			break;
         case 4:
             try {
                 informeCompleto();
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Error: no se pudo acceder al informe.", "Errores", JOptionPane.ERROR_MESSAGE);
+                (new Mensajes.MensajeError("Error: no se pudo acceder al informe.", "Error")).mostrar();
             }
 			break;
         case 5:
@@ -344,10 +344,10 @@ public class Main {
                     Biblioteca.imprimirInfoCompleta(); // temp debug
                     (new Mensajes.MensajeInfo("Has alquilado '" + libroActual.getTitulo() + "' exitosamente.", "Aviso")).mostrar();
                 } else {
-                    JOptionPane.showMessageDialog(null, "Ya tienes un préstamo en curso, no puedes alquilar más libros.", "Info", JOptionPane.ERROR_MESSAGE);
+                    (new Mensajes.MensajeError("Ya tienes un préstamo en curso, no puedes alquilar más libros", "Aviso")).mostrar();
                 }
             } else {
-                JOptionPane.showMessageDialog(null, "El libro que deseas alquilar no está disponible.", "Info", JOptionPane.ERROR_MESSAGE);
+                (new Mensajes.MensajeError("El libro que deseas alquilar no está disponible.", "Aviso")).mostrar();
             }
         } else {
             (new Mensajes.MensajeInfo("El libro no está en el catálogo", "Aviso")).mostrar();
@@ -371,7 +371,7 @@ public class Main {
             
             (new Mensajes.MensajeInfo("has devuelto '" + libroActual.getTitulo() + "'.", "Aviso")).mostrar();
         } else {
-            JOptionPane.showMessageDialog(null, "usted no tiene libros alquilados.", "Info", JOptionPane.ERROR_MESSAGE);
+            (new Mensajes.MensajeError("usted no tiene libros alquilados.", "Error")).mostrar();
         }
         menuPrincipal();
     }
