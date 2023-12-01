@@ -5,7 +5,8 @@ import java.util.List;
 
 import javax.swing.JOptionPane;
 
-import Actividad2.Mensajes.MensajeInfo;;
+// import Actividad2.Mensajes.MensajeInfo;
+// el IDE me indica que no es necesario importar esa clase ya que la estoy instanciando de forma anónima
 
 public class Main {
     private static Usuario usuarioActual; // Variable global para almacenar el usuario actual
@@ -21,11 +22,8 @@ public class Main {
     
     public static void menuInicio() {
 
-        // Temp
-        // testeando Mensajes
-        Mensajes.MensajeInfo mensajePrueba = new Mensajes.MensajeInfo("Mensaje de prueba", "Título del mensaje");
-        mensajePrueba.mostrar();
-        // - temp
+        // Temp: testeando Mensajes
+        (new Mensajes.MensajeInfo("Mensaje de ssssssprueba", "Título del mensaje")).mostrar(); // instanciación anónima
 
         // Cuadro de Diálogo con opciones
         String[] opciones = {"Iniciar Sesión", "Registrarme", "Salir"};
