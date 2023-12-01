@@ -41,4 +41,33 @@ public class Mensajes {
             );
         }
     }
+
+    public static class MensajeError extends MensajeAbstracto {
+        private String contenido;
+        private String titulo;
+    
+        public MensajeError(String contenido, String titulo) {
+            this.titulo = titulo;
+            this.contenido = contenido;
+        }
+    
+        @Override
+        public String obtenerTitulo() {
+            return titulo;
+        }
+        
+        @Override
+        public String obtenerContenido() {
+            return contenido;
+        }
+        
+        public void mostrar() {
+            JOptionPane.showMessageDialog(
+                null,
+                this.obtenerContenido(),
+                this.obtenerTitulo(),
+                JOptionPane.ERROR_MESSAGE
+            );
+        }
+    }
 }
