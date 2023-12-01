@@ -6,7 +6,7 @@ import java.util.List;
 import javax.swing.JOptionPane;
 
 // import Actividad2.Mensajes.MensajeInfo;
-// el IDE me indica que no es necesario importar esa clase ya que la estoy instanciando de forma anónima
+// (el IDE me indica que no es necesario importar esa clase ya que la estoy instanciando de forma anónima)
 
 public class Main {
     private static Usuario usuarioActual; // Variable global para almacenar el usuario actual
@@ -21,10 +21,6 @@ public class Main {
     }
     
     public static void menuInicio() {
-
-        // Temp: testeando Mensajes
-        (new Mensajes.MensajeInfo("Mensaje de ssssssprueba", "Título del mensaje")).mostrar(); // instanciación anónima
-
         // Cuadro de Diálogo con opciones
         String[] opciones = {"Iniciar Sesión", "Registrarme", "Salir"};
 		int seleccion = JOptionPane.showOptionDialog(
@@ -122,7 +118,7 @@ public class Main {
             
         } else {
             usuarioActual = usuarioEncontrado;
-            JOptionPane.showMessageDialog(null, "Sesión iniciada", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+            (new Mensajes.MensajeInfo("Sesión iniciada", "Éxito")).mostrar();
             menuPrincipal();
         }
     }
@@ -197,7 +193,7 @@ public class Main {
             // instanciar Usuario con los datos ingresados
             Usuario nuevoUsuario = new Usuario(dniIngresado, nombreIngresado, apellidoIngresado, emailIngresado, contrasenaIngresada, false);
             Biblioteca.agregarNuevoUsuario(nuevoUsuario);
-            JOptionPane.showMessageDialog(null, "usuario registrado con éxito", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+            (new Mensajes.MensajeInfo("usuario registrado con éxito", "Éxito")).mostrar();
             Biblioteca.imprimirListadoUsuarios(); // temp
             
             usuarioActual = nuevoUsuario;
@@ -287,10 +283,10 @@ public class Main {
             // Buscar libro por título
             String tituloLibro = JOptionPane.showInputDialog("Ingresar título del libro:");
 			if (Biblioteca.buscarLibroPorTitulo(tituloLibro)) {
-                JOptionPane.showMessageDialog(null, "El libro está en el catálogo", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                (new Mensajes.MensajeInfo("El libro está en el catálogo", "Éxito")).mostrar();
                 menuPrincipal();
             } else {
-                JOptionPane.showMessageDialog(null, "El libro no está en el catálogo", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+                (new Mensajes.MensajeInfo("El libro no está en el catálogo", "Aviso")).mostrar();
                 menuPrincipal();
             };
 			break;
@@ -298,20 +294,20 @@ public class Main {
 		case 1:
             String autorLibro = JOptionPane.showInputDialog("Ingresar autor del libro:");
             if (Biblioteca.buscarLibroPorAutor(autorLibro)) {
-                JOptionPane.showMessageDialog(null, "Hay libros del autor indicado en catálogo", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                (new Mensajes.MensajeInfo("Hay libros del autor indicado en catálogo", "Éxito")).mostrar();
                 menuPrincipal();
             } else {
-                JOptionPane.showMessageDialog(null, "No hay libros del autor indicado en catálogo", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+                (new Mensajes.MensajeInfo("No hay libros del autor indicado en catálogo", "Aviso")).mostrar();
                 menuPrincipal();
             };
 			break;
 		case 2:
 			String generoLibro = JOptionPane.showInputDialog("Ingresar género del libro:");
 			 if (Biblioteca.buscarLibroPorGenero(generoLibro)) {
-                JOptionPane.showMessageDialog(null, "Hay libros del género indicado en catálogo", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                (new Mensajes.MensajeInfo("Hay libros del género indicado en catálogo", "Éxito")).mostrar();
                 menuPrincipal();
             } else {
-                JOptionPane.showMessageDialog(null, "No hay libros del género indicado en catálogo", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+                (new Mensajes.MensajeInfo("No hay libros del género indicado en catálogo", "Aviso")).mostrar();
                 menuPrincipal();
             };
 			break;
@@ -329,7 +325,7 @@ public class Main {
 
         Libro nuevoLibro = new Libro(nombreLibro, autorLibro, generoLibro, true, null);
         Biblioteca.agregarNuevoLibro(nuevoLibro);
-        JOptionPane.showMessageDialog(null, "libro registrado con éxito", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+        (new Mensajes.MensajeInfo("libro registrado con éxito", "Aviso")).mostrar();
         menuPrincipal();
 
         
@@ -346,7 +342,7 @@ public class Main {
                     libroActual.setDisponible(false);
                     libroActual.setAlquiladoDNI(usuarioActual.getDni());
                     Biblioteca.imprimirInfoCompleta(); // temp debug
-                    JOptionPane.showMessageDialog(null, "Has alquilado '" + libroActual.getTitulo() + "' exitosamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                    (new Mensajes.MensajeInfo("Has alquilado '" + libroActual.getTitulo() + "' exitosamente.", "Aviso")).mostrar();
                 } else {
                     JOptionPane.showMessageDialog(null, "Ya tienes un préstamo en curso, no puedes alquilar más libros.", "Info", JOptionPane.ERROR_MESSAGE);
                 }
@@ -354,7 +350,7 @@ public class Main {
                 JOptionPane.showMessageDialog(null, "El libro que deseas alquilar no está disponible.", "Info", JOptionPane.ERROR_MESSAGE);
             }
         } else {
-            JOptionPane.showMessageDialog(null, "El libro no está en el catálogo", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+            (new Mensajes.MensajeInfo("El libro no está en el catálogo", "Aviso")).mostrar();
         }
     
         Biblioteca.imprimirInfoCompleta(); // temp
@@ -373,7 +369,7 @@ public class Main {
             libroActual.setAlquiladoDNI(null);
             libroActual.setDisponible(true);
             
-            JOptionPane.showMessageDialog(null, "has devuelto '" + libroActual.getTitulo() + "'.", "Info", JOptionPane.INFORMATION_MESSAGE);
+            (new Mensajes.MensajeInfo("has devuelto '" + libroActual.getTitulo() + "'.", "Aviso")).mostrar();
         } else {
             JOptionPane.showMessageDialog(null, "usted no tiene libros alquilados.", "Info", JOptionPane.ERROR_MESSAGE);
         }
@@ -402,7 +398,7 @@ public class Main {
             mensajeUsuarios.append(" - " + usuario.getNombre() + " " + usuario.getNombre() + " | DNI: " +  usuario.getDni() + ".\n");
         });
 
-        JOptionPane.showMessageDialog(null, mensajeLibros.toString() + "\n\n" + mensajeUsuarios.toString(), "Informe", JOptionPane.INFORMATION_MESSAGE);
+        (new Mensajes.MensajeInfo(mensajeLibros.toString() + "\n\n" + mensajeUsuarios.toString(), "Aviso")).mostrar();
 
         menuPrincipal();
 
