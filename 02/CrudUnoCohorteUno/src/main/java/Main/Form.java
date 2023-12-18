@@ -119,6 +119,11 @@ public class Form extends javax.swing.JFrame {
         });
 
         btnModificar.setText("Actualizar Registro");
+        btnModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarActionPerformed(evt);
+            }
+        });
 
         btnEliminar.setText("Eliminar Registro");
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -167,6 +172,11 @@ public class Form extends javax.swing.JFrame {
                 "ID", "nombreCarrera"
             }
         ));
+        TablaDatos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TablaDatosMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(TablaDatos);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -219,6 +229,7 @@ public class Form extends javax.swing.JFrame {
     // --------------------------------------------------------------------
     // Lógica
     
+    // Agregar registros
     public void agregar(String nombreCarrera) {
         // definir la sentencia sql para insertar una nueva carrera
         String sql = "INSERT INTO carreras (nombrecarrera) VALUES(?)";
@@ -250,6 +261,8 @@ public class Form extends javax.swing.JFrame {
         }
     }
     
+    
+    // Mostrar registros
     public void mostrar() {
         // Definir la query sql para seleccionar todos los registros de la tabla Carreras
         String sql = "SELECT * FROM carreras";
@@ -296,9 +309,61 @@ public class Form extends javax.swing.JFrame {
     }
     
     
+    // Actuzliar registros
+    public int obtenerIdSeleccionado() {
+        // obtener la fila seleccionada en la tabla
+        int filaSeleccionada = TablaDatos.getSelectedRow();
+        if (filaSeleccionada == -1) {
+            JOptionPane.showMessageDialog(null, "Debe seleccionar una fila de la tabla");
+        }
+        int id = (int) TablaDatos.getValueAt(filaSeleccionada, 0);
+        return id;
+    }
+    
+    public void modificar() {
+        // Obtener el nuevo nombre  de carrera desde un campo de texto
+        String nuevoNombre = nombreCarrera.getText();
+        
+        // verificar si se proporcionó un nuevo nombre
+        if (nuevoNombre.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Debe ingresar un nuevo nombre de carrera");
+        } else {
+            Main con = new Main();
+            Connection conexion = con.establecerConexion();
+            
+            if (conexion != null) {
+                try {
+                    int idSeleccionado = obtenerIdSeleccionado();
+                    if (idSeleccionado != -1) {
+                        String sql = "UPDATE carreras SET nombreCarrera = ? WHERE id = ?";
+                        PreparedStatement preparedStatement = conexion.prepareStatement(sql);
+                        preparedStatement.setString(1, nuevoNombre);
+                        preparedStatement.setInt(2, idSeleccionado);
+                        
+                        // Ejecutamos la actualización
+                        int filasAfectadas = preparedStatement.executeUpdate();
+                        if (filasAfectadas > 0) {
+                            JOptionPane.showMessageDialog(null, "Nombre de la carrera modificado exitosamente");
+                        } else {
+                            JOptionPane.showMessageDialog(null, "No se pudo modificar el nombre de la carrera");
+                        }
+                        // Cerrar la conexión
+                        conexion.close();
+                    }
+                } catch(SQLException e) {
+                    e.printStackTrace();
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "No se pudo establecer la conexión");
+            }
+        }
+        
+    }
+    
+    
     // --------------------------------------------------------------------
 
-    //Mostrar los registros
+    
     private void btnTraerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTraerActionPerformed
         mostrar();
     }//GEN-LAST:event_btnTraerActionPerformed
@@ -321,6 +386,25 @@ public class Form extends javax.swing.JFrame {
     private void nombreCarreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreCarreraActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_nombreCarreraActionPerformed
+
+    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
+        modificar();
+        mostrar();
+        nuevo();
+                
+    }//GEN-LAST:event_btnModificarActionPerformed
+
+    private void TablaDatosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaDatosMouseClicked
+        int fila = TablaDatos.getSelectedRow();
+        if (fila == -1) {
+            JOptionPane.showMessageDialog(null, "Carrera no seleccionada");
+        } else {
+            int id = Integer.parseInt((String) TablaDatos.getValueAt(fila, 0).toString());
+            String nom = (String) TablaDatos.getValueAt(fila, 1);
+            idCarrera.setText(" " + id);
+            nombreCarrera.setText(nom);
+        }
+    }//GEN-LAST:event_TablaDatosMouseClicked
 
     /**
      * @param args the command line arguments
