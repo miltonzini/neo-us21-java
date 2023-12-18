@@ -360,7 +360,32 @@ public class Form extends javax.swing.JFrame {
         
     }
     
-    
+    public void eliminar() {
+        int filaSeleccionada = TablaDatos.getSelectedRow();
+        if (filaSeleccionada == -1) {
+            JOptionPane.showMessageDialog(null, "Debe seleccionar una fila");
+        } else {
+            int idEliminar = (int) TablaDatos.getValueAt(filaSeleccionada, 0);
+            String sql = "DELETE FROM carreras WHERE ID = " + idEliminar;
+            
+            try{
+                Main con = new Main();
+                Connection conexion = con.establecerConexion();
+                Statement st = conexion.createStatement();
+                
+                int filasAfectadas = st.executeUpdate(sql);
+                if(filasAfectadas > 0) {
+                    JOptionPane.showMessageDialog(null, "La carrera se eliminó correctamente");
+                } else {
+                    JOptionPane.showMessageDialog(null, "No se pudo eliminar la carrera");
+                }
+                st.close();
+                conexion.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
     // --------------------------------------------------------------------
 
     
@@ -380,7 +405,9 @@ public class Form extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        // TODO add your handling code here:
+        eliminar();
+        mostrar();
+        nuevo();
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void nombreCarreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreCarreraActionPerformed
