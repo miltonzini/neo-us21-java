@@ -5,12 +5,14 @@
 package Main;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -210,8 +212,43 @@ public class Form extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
+    public void nuevo(){
+        nombreCarrera.setText("");
+        nombreCarrera.requestFocus();
+    }
     // --------------------------------------------------------------------
     // Lógica
+    
+    public void agregar(String nombreCarrera) {
+        // definir la sentencia sql para insertar una nueva carrera
+        String sql = "INSERT INTO carreras (nombrecarrera) VALUES(?)";
+        
+        // Crear una instancia de la clase Main para establecer la conexión a base de datos
+        Main con = new Main();
+        
+        Connection conexion = con.establecerConexion();
+        
+        try {
+            // Preparar la sentencia sql para su ejecución
+            PreparedStatement preparedStatement = conexion.prepareStatement(sql);
+            preparedStatement.setString(1, nombreCarrera);
+            
+            // Ejecutar la sentencia sql y obtener el número de filas afectadas
+            int filasAfectadas = preparedStatement.executeUpdate();
+            
+            if(filasAfectadas > 0) {
+                JOptionPane.showMessageDialog(null, "Carrera agregada exitosamente");
+            } else {
+                JOptionPane.showMessageDialog(null, "No se pudo agregar la nueva carrera");
+            }
+            
+            // Cerrar prepared statement
+            preparedStatement.close();
+           
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
     
     public void mostrar() {
         // Definir la query sql para seleccionar todos los registros de la tabla Carreras
@@ -271,7 +308,10 @@ public class Form extends javax.swing.JFrame {
     }//GEN-LAST:event_idCarreraActionPerformed
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-        // TODO add your handling code here:
+        String nombre = nombreCarrera.getText();
+        agregar(nombre);
+        mostrar();
+        nuevo();
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
