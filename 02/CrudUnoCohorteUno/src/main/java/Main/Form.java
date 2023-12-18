@@ -4,6 +4,15 @@
  */
 package Main;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Milton Zini
@@ -33,12 +42,12 @@ public class Form extends javax.swing.JFrame {
         nombreCarrera = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         btnAgregar = new javax.swing.JButton();
-        btnLeer = new javax.swing.JButton();
+        btnTraer = new javax.swing.JButton();
         btnModificar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tablaDatos = new javax.swing.JTable();
+        TablaDatos = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -100,10 +109,10 @@ public class Form extends javax.swing.JFrame {
             }
         });
 
-        btnLeer.setText("Mostrar Registro");
-        btnLeer.addActionListener(new java.awt.event.ActionListener() {
+        btnTraer.setText("Mostrar Registro");
+        btnTraer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLeerActionPerformed(evt);
+                btnTraerActionPerformed(evt);
             }
         });
 
@@ -124,7 +133,7 @@ public class Form extends javax.swing.JFrame {
                 .addGap(47, 47, 47)
                 .addComponent(btnAgregar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnLeer)
+                .addComponent(btnTraer)
                 .addGap(18, 18, 18)
                 .addComponent(btnModificar)
                 .addGap(18, 18, 18)
@@ -137,7 +146,7 @@ public class Form extends javax.swing.JFrame {
                 .addGap(35, 35, 35)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAgregar)
-                    .addComponent(btnLeer)
+                    .addComponent(btnTraer)
                     .addComponent(btnModificar)
                     .addComponent(btnEliminar))
                 .addContainerGap(44, Short.MAX_VALUE))
@@ -145,7 +154,7 @@ public class Form extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(153, 255, 51));
 
-        tablaDatos.setModel(new javax.swing.table.DefaultTableModel(
+        TablaDatos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
                 {null, null},
@@ -153,10 +162,10 @@ public class Form extends javax.swing.JFrame {
                 {null, null}
             },
             new String [] {
-                "ID", "nombreDeCarrera"
+                "ID", "nombreCarrera"
             }
         ));
-        jScrollPane1.setViewportView(tablaDatos);
+        jScrollPane1.setViewportView(TablaDatos);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -200,10 +209,53 @@ public class Form extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnLeerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLeerActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnLeerActionPerformed
+    
+    //Mostrar los registros
+    private void btnTraerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTraerActionPerformed
+        // Definir la query sql para seleccionar todos los registros de la tabla Carreras
+        String sql = "SELECT * FROM carreras";
+        
+        // Creamos una instancia de la clase Main para crear la conexión a base de datos
+        Main con = new Main();
+        
+        // Establecemos la conexión
+        Connection conexion = con.establecerConexion();
+        
+        System.out.println(sql);
+        
+        // Creamos modelo para almacenar los registros dentro de la tabla
+        DefaultTableModel model = new DefaultTableModel();
+        
+        try{
+            // creamos una declaración para ejecutar la consulta sql
+            Statement st = conexion.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            
+            // obtenemos a información de las columnas de la consulta
+            ResultSetMetaData metaData = rs.getMetaData();
+            
+            int numColumnas = metaData.getColumnCount();
+            for (int column = 1; column <= numColumnas; column++) {
+                model.addColumn(metaData.getColumnName(column));
+            }
+            
+            // Agregamos las filas al modelo de la tabla
+            while(rs.next()){
+                Object[] rowData = new Object[numColumnas];
+                for(int i = 0; i<numColumnas; i++) {
+                    rowData[i] = rs.getObject(i+1);
+                }
+                model.addRow(rowData);
+            }
+            
+            // Asignamos el modelo de la tabla al componente TablaDatos
+            TablaDatos.setModel(model);
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        
+    }//GEN-LAST:event_btnTraerActionPerformed
 
     private void idCarreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idCarreraActionPerformed
         // TODO add your handling code here:
@@ -257,10 +309,11 @@ public class Form extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable TablaDatos;
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnEliminar;
-    private javax.swing.JButton btnLeer;
     private javax.swing.JButton btnModificar;
+    private javax.swing.JButton btnTraer;
     private javax.swing.JTextField idCarrera;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -269,6 +322,5 @@ public class Form extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField nombreCarrera;
-    private javax.swing.JTable tablaDatos;
     // End of variables declaration//GEN-END:variables
 }
