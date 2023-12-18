@@ -21,7 +21,7 @@ public class Main {
     public Connection establecerConexion() {
         try {
             conectar = DriverManager.getConnection(cadena, usuario, contrasena);
-            JOptionPane.showMessageDialog(null, "Se generó la conexión");
+//            JOptionPane.showMessageDialog(null, "Se generó la conexión");
         } catch(SQLException e) {
             JOptionPane.showMessageDialog(null, "No se generó la conexión" + e);
         }

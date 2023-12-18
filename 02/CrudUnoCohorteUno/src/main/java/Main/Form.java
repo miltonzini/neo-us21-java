@@ -210,8 +210,10 @@ public class Form extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
-    //Mostrar los registros
-    private void btnTraerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTraerActionPerformed
+    // --------------------------------------------------------------------
+    // Lógica
+    
+    public void mostrar() {
         // Definir la query sql para seleccionar todos los registros de la tabla Carreras
         String sql = "SELECT * FROM carreras";
         
@@ -254,7 +256,14 @@ public class Form extends javax.swing.JFrame {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        
+    }
+    
+    
+    // --------------------------------------------------------------------
+
+    //Mostrar los registros
+    private void btnTraerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTraerActionPerformed
+        mostrar();
     }//GEN-LAST:event_btnTraerActionPerformed
 
     private void idCarreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idCarreraActionPerformed
